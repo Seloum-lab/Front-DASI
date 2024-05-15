@@ -39,6 +39,7 @@ public class ProfilUtilisateurSerialization extends Serialization {
             utilisateurJson.addProperty("prenom", utilisateur.getPrenom());
             utilisateurJson.addProperty("mail", utilisateur.getMail());
             container.add("utilisateur", utilisateurJson);
+            container.addProperty("client", true);
         } 
         else {
             Employee utilisateur = (Employee) req.getAttribute("utilisateur");
@@ -53,16 +54,12 @@ public class ProfilUtilisateurSerialization extends Serialization {
                 utilisateurJson.addProperty("prenom", utilisateur.getPrenom());
                 utilisateurJson.addProperty("mail", utilisateur.getAdresseMail());
                 container.add("utilisateur", utilisateurJson);
+                container.addProperty("client", false);
         }
             
         }
         
-        
-        
-        
-        
-   
-        
+
 
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;

@@ -6,14 +6,10 @@
 package Controleur;
 
 import View.InscriptionSerialization;
+import View.ProfilAstroSerialization;
 import View.ProfilUtilisateurSerialization;
 import dao.JpaUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,12 +53,23 @@ public class ActionServlet extends HttpServlet {
                     ProfilUtilisateurSerialization serial = new ProfilUtilisateurSerialization();
                     serial.serialize(request, response);
                     break;
+                    
                 case "inscrire":
                     System.out.println("------------------------------------ Inscrire ");
                     InscrireUtilisateurAction inscrire = new InscrireUtilisateurAction();
                     inscrire.execute(request);
                     InscriptionSerialization serialinscr = new InscriptionSerialization();
                     serialinscr.serialize(request, response);
+                    break;
+                    
+                case "load_dashboard":
+                    System.err.println("------------------------------------ Page accueil");
+                    LoadDashboardAction loaddashboard = new LoadDashboardAction();
+                    loaddashboard.execute(request);
+                    ProfilAstroSerialization serialprofil = new ProfilAstroSerialization();
+                    serialprofil.serialize(request, response);
+                    break;
+                    
                     
                     
                     

@@ -1,7 +1,9 @@
-H:\3IF\DASI\tuto_web\src\main\java\Controleur\ActionServlet.java
-H:\3IF\DASI\tuto_web\src\main\java\View\ProfilUtilisateurSerialization.java
-H:\3IF\DASI\tuto_web\src\main\java\View\Serialization.java
-H:\3IF\DASI\tuto_web\src\main\java\View\InscriptionSerialization.java
-H:\3IF\DASI\tuto_web\src\main\java\Controleur\InscrireUtilisateurAction.java
-H:\3IF\DASI\tuto_web\src\main\java\Controleur\Action.java
-H:\3IF\DASI\tuto_web\src\main\java\Controleur\AuthentifierUtilisateurAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\LoadDashboardAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\InscriptionSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\AuthentifierUtilisateurAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\ProfilAstroSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\ProfilUtilisateurSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\Serialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\InscrireUtilisateurAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\Action.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\ActionServlet.java
