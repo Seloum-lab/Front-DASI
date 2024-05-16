@@ -1,9 +1,0 @@
-Controleur\Action.class
-Controleur\ActionServlet.class
-Controleur\LoadDashboardAction.class
-View\ProfilAstroSerialization.class
-View\ProfilUtilisateurSerialization.class
-Controleur\InscrireUtilisateurAction.class
-Controleur\AuthentifierUtilisateurAction.class
-View\Serialization.class
-View\InscriptionSerialization.class

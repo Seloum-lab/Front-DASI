@@ -5,9 +5,11 @@
  */
 package Controleur;
 
+import View.AffichageClientSerialization;
 import View.InscriptionSerialization;
 import View.ProfilAstroSerialization;
 import View.ProfilUtilisateurSerialization;
+import View.StatisticsSerialization;
 import dao.JpaUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -63,12 +65,32 @@ public class ActionServlet extends HttpServlet {
                     break;
                     
                 case "load_dashboard":
-                    System.err.println("------------------------------------ Page accueil");
+                    System.out.println("------------------------------------ Page accueil");
                     LoadDashboardAction loaddashboard = new LoadDashboardAction();
                     loaddashboard.execute(request);
                     ProfilAstroSerialization serialprofil = new ProfilAstroSerialization();
                     serialprofil.serialize(request, response);
                     break;
+                    
+                case "statistics" :
+                    System.out.println("------------------------------------ Page statistiques");
+                    StatisticsAction stats = new StatisticsAction();
+                    stats.execute(request);
+                    StatisticsSerialization statisticsSerializer = new StatisticsSerialization();
+                    statisticsSerializer.serialize(request, response);
+                    break;
+                    
+                case "affichage_client" :
+                    System.out.println("------------------------------------ Affichage clients");
+                    AffichageClientAction affichage = new AffichageClientAction();
+                    affichage.execute(request);
+                    AffichageClientSerialization affichageserialization = new AffichageClientSerialization();
+                    affichageserialization.serialize(request, response);
+                    break;
+                    
+                    
+
+                    
                     
                     
                     
