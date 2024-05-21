@@ -26,7 +26,7 @@ public class DemanderConsultationSerialization extends Serialization {
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();   
         
-        Boolean statusDemandeConsultation = (Boolean) req.getAttribute("consultation");
+        Boolean statusDemandeConsultation = (Boolean) req.getAttribute("demandeConsultation");
         container.addProperty("demandeConsultation", statusDemandeConsultation); // true si la consultation est prise, faux sinon
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;
