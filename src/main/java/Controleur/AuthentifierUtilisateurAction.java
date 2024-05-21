@@ -16,7 +16,7 @@ import metier.service.Service;
 
 /**
  *
- * @author sbenbouzid
+ * classe utilise pour authentifier un utilisateur
  */
 public class AuthentifierUtilisateurAction extends Action{
 

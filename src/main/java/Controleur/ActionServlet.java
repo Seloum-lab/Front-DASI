@@ -7,7 +7,7 @@ package Controleur;
 
 import View.AffichageClientSerialization;
 import View.InscriptionSerialization;
-import View.ProfilAstroSerialization;
+import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
 import View.StatisticsSerialization;
 import dao.JpaUtil;
@@ -64,12 +64,16 @@ public class ActionServlet extends HttpServlet {
                     serialinscr.serialize(request, response);
                     break;
                     
-                case "load_dashboard":
+                case "load_dashboardClient":
                     System.out.println("------------------------------------ Page accueil");
-                    LoadDashboardAction loaddashboard = new LoadDashboardAction();
+                    LoadDashboardClientAction loaddashboard = new LoadDashboardClientAction();
                     loaddashboard.execute(request);
-                    ProfilAstroSerialization serialprofil = new ProfilAstroSerialization();
+                    LoadDashboardClientSerialization serialprofil = new LoadDashboardClientSerialization();
                     serialprofil.serialize(request, response);
+                    break;
+                    
+                case "load_dashboardEmploye":
+                    
                     break;
                     
                 case "statistics" :

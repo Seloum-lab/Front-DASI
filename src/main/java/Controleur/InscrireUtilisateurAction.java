@@ -16,7 +16,7 @@ import metier.service.Service;
 
 /**
  *
- * @author sbenbouzid
+ * classe utilise pour inscrire un utilisateur
  */
 public class InscrireUtilisateurAction extends Action{
 

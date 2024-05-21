@@ -14,7 +14,7 @@ import metier.service.Service;
 
 /**
  *
- * @author sbenbouzid
+ * classe utilise pour afficher la liste des consultations
  */
 public class AffichageConsultation extends Action {
 

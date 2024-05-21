@@ -18,7 +18,7 @@ import metier.modele.ProfilAstro;
  *
  * @author sbenbouzid
  */
-public class ProfilAstroSerialization extends Serialization {
+public class LoadDashboardClientSerialization extends Serialization {
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {

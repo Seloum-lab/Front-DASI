@@ -15,7 +15,7 @@ import metier.service.Service;
  *
  * @author sbenbouzid
  */
-public class LoadDashboardAction extends Action {
+public class LoadDashboardClientAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req) {
