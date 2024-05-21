@@ -14,30 +14,38 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import metier.modele.Client;
+import metier.modele.Astrologue;
+import metier.modele.Cartomancien;
+import metier.modele.Medium;
 
 /**
  *
  * @author sbenbouzid
  */
-public class AffichageClientSerialization extends Serialization{
+public class DemanderConsultationSerialization extends Serialization{
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
         Gson gson = new GsonBuilder().serializeNulls().create();
-        JsonObject container = new JsonObject();   
+        JsonObject container = new JsonObject();
         
-        List<Client> clientList = (List<Client>) req.getAttribute("liste_client");
-        JsonArray clientListJson = new JsonArray();
+        JsonArray mediumListJson = new JsonArray();
+        List<Medium> mediumList = (List<Medium>) req.getAttribute("medium_liste");
         
-        for (Client client : clientList) {
-            JsonObject clientJson = new JsonObject();
-            clientJson.addProperty("id", client.getId());
-            clientListJson.add(clientJson);
+        for (Medium medium : mediumList) {
+            JsonObject mediumJson = new JsonObject();
+            String type = "spirite";
+            mediumJson.addProperty("nom", medium.getDenomination());
+            mediumJson.addProperty("id", medium.getId());
+            if (medium instanceof Astrologue) type = "astrologue";
+            else if (medium instanceof Cartomancien) type = "cartomancien";
+            mediumJson.addProperty("type", type);
+            
+            mediumListJson.add(mediumJson);
+            
         }
         
-        container.add("client_list", clientListJson);
-        
+        container.add("medium_liste", mediumListJson);
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;
 
@@ -46,8 +54,6 @@ public class AffichageClientSerialization extends Serialization{
         out.close();
         
         
-    
-    
     }
     
 }

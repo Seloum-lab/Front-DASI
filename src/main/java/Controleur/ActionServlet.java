@@ -6,6 +6,7 @@
 package Controleur;
 
 import View.AffichageClientSerialization;
+import View.DemanderConsultationSerialization;
 import View.InscriptionSerialization;
 import View.ProfilAstroSerialization;
 import View.ProfilUtilisateurSerialization;
@@ -87,6 +88,15 @@ public class ActionServlet extends HttpServlet {
                     AffichageClientSerialization affichageserialization = new AffichageClientSerialization();
                     affichageserialization.serialize(request, response);
                     break;
+                    
+                case "demander_consultation" :
+                    System.out.println("------------------------------------ Demadner consultation");
+                    DemanderConsultationAction demander = new DemanderConsultationAction();
+                    demander.execute(request);
+                    DemanderConsultationSerialization demadnerserialization = new DemanderConsultationSerialization();
+                    demadnerserialization.serialize(request, response);
+                    break;
+                    
                     
                     
 
