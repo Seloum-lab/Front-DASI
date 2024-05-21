@@ -13,7 +13,7 @@ import metier.service.Service;
 
 /**
  *
- * @author sbenbouzid
+ * classe utiliser pour afficher le dashboard du client
  */
 public class LoadDashboardClientAction extends Action {
 

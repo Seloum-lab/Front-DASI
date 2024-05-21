@@ -6,6 +6,7 @@
 package Controleur;
 
 import View.AffichageClientSerialization;
+import View.AffichageListeMediumSerialization;
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
@@ -72,10 +73,6 @@ public class ActionServlet extends HttpServlet {
                     serialprofil.serialize(request, response);
                     break;
                     
-                case "load_dashboardEmploye":
-                    
-                    break;
-                    
                 case "statistics" :
                     System.out.println("------------------------------------ Page statistiques");
                     StatisticsAction stats = new StatisticsAction();
@@ -90,6 +87,14 @@ public class ActionServlet extends HttpServlet {
                     affichage.execute(request);
                     AffichageClientSerialization affichageserialization = new AffichageClientSerialization();
                     affichageserialization.serialize(request, response);
+                    break;
+                    
+                case "demanderConsultation" :  // dans la page de demande de medium, on a besoin de get tous les mediums pour les afficher sur la page
+                    System.out.println("------------------------------------ Demander une consultation"); 
+                    AffichageListeMediumAction affichageMedium = new AffichageListeMediumAction(); 
+                    affichageMedium.execute(request);
+                    AffichageListeMediumSerialization affichageMediumSerialization = new AffichageListeMediumSerialization(); 
+                    affichageMediumSerialization.serialize(request, response);
                     break;
                     
                     
