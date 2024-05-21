@@ -18,7 +18,7 @@ import metier.modele.Medium;
 
 /**
  *
- * @author aabisaleh
+ * classe utilise pour afficher la liste des mediums dans la page demander consultation
  */
 public class AffichageListeMediumSerialization extends Serialization {
         public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException{
