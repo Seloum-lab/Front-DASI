@@ -33,7 +33,7 @@ public class AffichageClientSerialization extends Serialization{
         for (Client client : clientList) {
             JsonObject clientJson = new JsonObject();
             clientJson.addProperty("id", client.getId());
-            clientListJson.add(container);
+            clientListJson.add(clientJson);
         }
         
         container.add("client_list", clientListJson);

@@ -28,7 +28,7 @@ public class DemandeConsultationAction extends Action {
         if(consultation == null) // donc la demande de consultation n'a pas aboutie
             req.setAttribute("demandeConsultation", false);
         else   
-            req.setAttribute("consultation", true); // donc il y a bien une consultation qui a ete enregistree
+            req.setAttribute("demandeConsultation", true); // donc il y a bien une consultation qui a ete enregistree
     }
     
 }

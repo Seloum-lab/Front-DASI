@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\InscriptionSerialization.java
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\AfficherConsultationClient.java
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\StatisticsSerialization.java
@@ -14,3 +15,21 @@ H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\AffichageClientSerialization
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\AfficherConsultationEmploye.java
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\View\LoadDashboardClientSerialization.java
 H:\Cours\S2\frontDasi\Front-DASI\src\main\java\Controleur\Action.java
+=======
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\AffichageClientAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\AfficherConsultationClient.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\ProfilAstroSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\ProfilUtilisateurSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\Serialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\Action.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\AffichageClientSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\StatisticsSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\LoadDashboardAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\StatisticsAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\InscriptionSerialization.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\AuthentifierUtilisateurAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\InscrireUtilisateurAction.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\ActionServlet.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\Controleur\AffichageConsultation.java
+H:\3IF\DASI\tuto_web\Front-DASI\src\main\java\View\AfficherConsultationEmploye.java
+>>>>>>> 6f79272370ef1b89465c2e614f9929faaa0606c3

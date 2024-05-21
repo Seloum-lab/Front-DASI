@@ -27,7 +27,7 @@ public class DemanderConsultationSerialization extends Serialization {
         JsonObject container = new JsonObject();   
         
         Boolean statusDemandeConsultation = (Boolean) req.getAttribute("consultation");
-        container.addProperty("consultation", statusDemandeConsultation); // true si la consultation est prise, faux sinon
+        container.addProperty("demandeConsultation", statusDemandeConsultation); // true si la consultation est prise, faux sinon
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;
 
