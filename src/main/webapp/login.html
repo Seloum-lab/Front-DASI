@@ -32,6 +32,10 @@ and open the template in the editor.
 
         <script>
             $(document).ready( function () {
+                let xmlhttp = new XMLHttpRequest(); //Construction de la request
+                xmlhttp.open("GET", "./ActionServlet?todo=disconnect", true); //Lancer la requête
+                
+                
                 $('#bouton-connexion').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                     console.log("clic sur le bouton de connexion"); // LOG dans Console Javascript

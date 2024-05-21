@@ -9,6 +9,8 @@ and open the template in the editor.
         <title>DASHBOARD</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
     </head>
     <header>
         <!--La navbar qui redirige vers d'autres pages-->
@@ -24,41 +26,96 @@ and open the template in the editor.
     <body>
         <h1>Tableau de bord</h1>
         <div id = "carte"></div>
-        <div id = "top_medium"></div>
-        <div id = "Repartition"></div>
+        <div id = "top_medium">
+            <p>Top 5 mediums</p>
+            <ul>
+                <li id = "top1"></li>
+                <li id = "top2"></li>
+                <li id = "top3"></li>
+                <li id = "top4"></li>
+                <li id = "top5"></li>
+            </ul>
+        </div>
+        <div id = "repartition_employe"></div>
+        <div id = "repartition_medium"></div>
         
         <script>
             $(document).ready( function () {
-                // Appel AJAX
-                $.ajax({
-                    url: './ActionServlet',
-                    method: 'POST',
-                    data: {
-                        todo: 'load_dashboardEmploye',
-                    },
-                    dataType: 'json'
-                })
-                .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                    console.log('Response',response); // LOG dans Console Javascript
-                    if (response.connexion) {
-                        if (response.client) {
-                            window.location = "./dashboard_client.html";
+                let xmlhttp = new XMLHttpRequest(); //Construction de la request
+                xmlhttp.open("GET", "./ActionServlet?todo=statistics", true); //Lancer la requête
+                
+                
+                xmlhttp.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
+                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
+                        //Recuperation des JsonArray
+                        const jsonMedium = jsonResponse.medium_liste;
+                        const jsonRepartEmploye = jsonResponse.repartition_employe;
+                        const jsonRepartMedium = jsonResponse.repartition_medium;
+                        
+                        //Initialisation des valeurs pour le pie chart
+                        let dataSourceEmploye = [];
+                        let dataSourceMedium = [];
+                        let total = 0;
+                         
+                        //Parcours du top 5 medium et actualisation du HTML
+                        for (let i = 0; i<5 && i<jsonMedium.length; i++) {
+                            $("#top" + (i+1)).text(jsonMedium[i].nom);
+ 
+                            //Probleme avec le back des autres, top 5 medium pas toujours 5 !
                         }
-                        else {
-                            window.location = "./dashboard_employe.html";
-                        }
-                    }
-                    else {
-                        $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
-                    }
-                })
-                .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                    console.log('Error',error); // LOG dans Console Javascript
-                    alert("Erreur lors de l'appel fgfgfgffgfg");
-                })
-                .always( function () { // Fonction toujours appelée
 
-                });
+                        //Parcours de la repartition de consultation par employe et remplissage du dataSource pour la pie chart 
+                        for (const element of jsonRepartEmploye) {
+                            let obj = {x: "" + element.id + " : " + element.nom, y: element.nombre_consultations};
+                            dataSourceEmploye.push(obj);
+                            total += element.nombre_consultations; //Pour avoir le nombre de consultation total
+                        }
+                        
+                        for (const element of jsonRepartMedium) {
+                            let obj = {x: "" + element.id + " : " + element.nom, y : element.nombre_consultations};
+                            dataSourceMedium.push(obj);
+                        }
+                        var pieEmploye = new ej.charts.AccumulationChart({
+                            //Initializing Series
+                            title: "Repartition des consultations par employes (Total : " + total + ")",
+                            series: [
+                                {
+                                    dataSource: dataSourceEmploye,
+                                    dataLabel: {
+                                        visible: false,
+                                        position: 'Inside'
+                                    },
+                                    xName: 'x',
+                                    yName: 'y'
+                                }
+                            ]
+                            });
+                            pieEmploye.appendTo('#repartition_employe');
+                            
+                        var pieMedium = new ej.charts.AccumulationChart({
+                            //Initializing Series
+                            title: "Repartition des consultations par medium (Total : " + total + ")",
+                            series: [
+                                {
+                                    dataSource: dataSourceMedium,
+                                    dataLabel: {
+                                        visible: false,
+                                        position: 'Inside'
+                                    },
+                                    xName: 'x',
+                                    yName: 'y'
+                                }
+                            ]
+                            });
+                            pieMedium.appendTo('#repartition_medium');
+                    } 
+                };
+                xmlhttp.send(null);
+                
+                
+                
             });
         </script>
     </body>

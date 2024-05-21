@@ -6,11 +6,8 @@
 package Controleur;
 
 import View.AffichageClientSerialization;
-<<<<<<< HEAD
 import View.AffichageListeMediumSerialization;
-=======
 import View.DemanderConsultationSerialization;
->>>>>>> 6f79272370ef1b89465c2e614f9929faaa0606c3
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
@@ -100,6 +97,14 @@ public class ActionServlet extends HttpServlet {
                     AffichageListeMediumSerialization affichageMediumSerialization = new AffichageListeMediumSerialization(); 
                     affichageMediumSerialization.serialize(request, response);
                     break;
+                    
+                case "disconnect" :
+                    System.out.println("------------------------------------ deconnexion"); 
+                    DeconnexionAction deconnexion = new DeconnexionAction();
+                    deconnexion.execute(request);
+                    
+                    break;
+                    
                     
                     
 
