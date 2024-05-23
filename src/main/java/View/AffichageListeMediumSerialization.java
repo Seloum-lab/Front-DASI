@@ -35,6 +35,7 @@ public class AffichageListeMediumSerialization extends Serialization {
                     JsonObject mediumJson = new JsonObject();
                     mediumJson.addProperty("nom", med.getDenomination());
                     mediumJson.addProperty("presentation", med.getPresentation());
+                    mediumJson.addProperty("id", med.getId());
                     // TODO ajouter encore des propriete s'il en manque*
 
                     mediumsListJson.add(mediumJson); // on ajoute les mediums a la liste 

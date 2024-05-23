@@ -22,7 +22,7 @@ public class DemandeConsultationAction extends Action {
         Service service = new Service();
         
         Client c = service.rechercherClientParID((Long) req.getAttribute("ID")); // retrouver l'objet client grace a l'identifiant ajouter a la session
-        Medium m = (Medium) req.getAttribute("Medium"); // recuperer le medium demander qui sera ajouter dans la request lorsque l'utilisateur clique dessus dans la page demander un medium
+        Medium m = service.rechercherMediumParID((Long) req.getAttribute("idMedium")); // recuperer le medium demander qui sera ajouter dans la request lorsque l'utilisateur clique dessus dans la page demander un medium
         
         Consultation consultation = service.demanderConsultation(c, m); // demande de consultation lancee dans le back
         if(consultation == null) // donc la demande de consultation n'a pas aboutie

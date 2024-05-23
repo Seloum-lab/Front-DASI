@@ -6,11 +6,8 @@
 package Controleur;
 
 import View.AffichageClientSerialization;
-<<<<<<< HEAD
 import View.AffichageListeMediumSerialization;
-=======
 import View.DemanderConsultationSerialization;
->>>>>>> 6f79272370ef1b89465c2e614f9929faaa0606c3
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
@@ -93,8 +90,8 @@ public class ActionServlet extends HttpServlet {
                     affichageserialization.serialize(request, response);
                     break;
                     
-                case "demanderConsultation" :  // dans la page de demande de medium, on a besoin de get tous les mediums pour les afficher sur la page
-                    System.out.println("------------------------------------ Demander une consultation"); 
+                case "afficherListeMedium" :  // dans la page de demande de medium, on a besoin de get tous les mediums pour les afficher sur la page
+                    System.out.println("------------------------------------ Affichange de la liste des mediums"); 
                     AffichageListeMediumAction affichageMedium = new AffichageListeMediumAction(); 
                     affichageMedium.execute(request);
                     AffichageListeMediumSerialization affichageMediumSerialization = new AffichageListeMediumSerialization(); 
