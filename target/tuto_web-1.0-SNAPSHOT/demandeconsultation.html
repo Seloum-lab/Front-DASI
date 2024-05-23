@@ -6,56 +6,68 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Demande consultation</title>
+        <title>Demande de Consultation</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
-    <body>
+    <header>
+        <h1>Predict'IF</h1>
         <h1>Demande de consultation</h1>
+        <div id='profilUtilisateur'></div>
+        <a href='dashboard_client.html'>Retour</a>
+    </header>
+    <body>
+        <table id="listeMediums"></table>
         
-        <table id = "table" border = 0>
-            
-            
-            
-        </table>
-        
-    
-    
         <script>
-            $(document).ready(function() {
-                let xmlhttp = new XMLHttpRequest(); //Construction de la request
-                xmlhttp.open("GET", "./ActionServlet?todo=demander_consultation", true); //Lancer la requête
-                
-                xmlhttp.onreadystatechange = function() { //Handler pour la réponse
-                    let DONE = 4, OK = 200;
-                    if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
-                        //TODO AFFICHAGE DE TOUS LES MEDIUMS
-                        let counter  = 0;
-                        let lineCounter = 0;
-                        let actualID = "line1";
-                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
-                        let jsonArray = jsonResponse.medium_liste;
+            $(document).ready( function () {
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'afficherListeMedium',
+                    },
+                    dataType: 'json'
+                })
+                .done( function (response) { // affichage de la liste des mediums
+                    let table = document.getElementById("listeMedium") // on get la table dans le document HTML
+                    let listeMediums = response.listeMediums // TODO peut etre une source de BUG
+                    let cte = 0; // compteur pour le nombre de meduims par ligne
+                    let ligne = document.createELement("tr") // une ligne dans le tableau
+                    for(let i = 0; i < listeMediums.length / 3; i++) { // pcq 3 mediums par ligne
+                        let uneCase = document.createElement("th")
+                        let title = document.createElement("h1")
+                        title.innerHTML = listeMediums[i].nom
+                        let presentation = document.createElement("p")
+                        presentation.innerHTML = listeMedium[i].presentation
+                        uneCase.appendChild(title)
+                        uneCase.appendChild(presentation)
+                        uneCase.setAttribute("id", listMedium[i].id) // identifiant de la case est id du medium pour savoir quel medium est selectionne au clique
                         
-                        $("table").append
-                        for (medium in jsonArray) {
-                            document.
-                            
-                            
+//                        uneCase.on("click", function() {
+//                            // on veut que lorsqu un medium est clique, mettre son id qui est l id de l element uneCase dans la requete au cas ou l utilisateur demande un rdv avec le medium en question
+//                        })
+                        
+                        if(cte === 3) {
+                            table.appendChild(ligne) // on ajoute la ligne remplie au tableau
+                            ligne = document.createElement("tr") // on reprend une nouvelle ligne
+                            cte = 0 // reset le compteur
                         }
-
                         
+                        ligne.appendChild(uneCase) // on ajoute la case a la ligne
+                        cte++ // on met a jour le nombre de cases dans la ligne
                     }
                     
-                };
-                xmlhttp.send(null);
-                
-                
-            
-    
+                })
+                .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                    console.log('Error',error); // LOG dans Console Javascript
+                    alert("Erreur lors de l'appel fgfgfgffgfg");
+                })
+                .always( function () { // Fonction toujours appelée
+
+                });
             });
-    
         </script>
-        
     </body>
 </html>
