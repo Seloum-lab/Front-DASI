@@ -98,6 +98,14 @@ public class ActionServlet extends HttpServlet {
                     affichageMediumSerialization.serialize(request, response);
                     break;
                     
+                case "disconnect" :
+                    System.out.println("------------------------------------ deconnexion"); 
+                    DeconnexionAction deconnexion = new DeconnexionAction();
+                    deconnexion.execute(request);
+                    
+                    break;
+                    
+                    
                     
 
                     
