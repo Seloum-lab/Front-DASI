@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Demande de Consultation</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <header>
         <h1>Predict'IF</h1>
@@ -21,52 +22,48 @@ and open the template in the editor.
         
         <script>
             $(document).ready( function () {
-                // Appel AJAX
-                $.ajax({
-                    url: './ActionServlet',
-                    method: 'POST',
-                    data: {
-                        todo: 'afficherListeMedium',
-                    },
-                    dataType: 'json'
-                })
-                .done( function (response) { // affichage de la liste des mediums
-                    let table = document.getElementById("listeMedium") // on get la table dans le document HTML
-                    let listeMediums = response.listeMediums // TODO peut etre une source de BUG
-                    let cte = 0; // compteur pour le nombre de meduims par ligne
-                    let ligne = document.createELement("tr") // une ligne dans le tableau
-                    for(let i = 0; i < listeMediums.length / 3; i++) { // pcq 3 mediums par ligne
-                        let uneCase = document.createElement("th")
-                        let title = document.createElement("h1")
-                        title.innerHTML = listeMediums[i].nom
-                        let presentation = document.createElement("p")
-                        presentation.innerHTML = listeMedium[i].presentation
-                        uneCase.appendChild(title)
-                        uneCase.appendChild(presentation)
-                        uneCase.setAttribute("id", listMedium[i].id) // identifiant de la case est id du medium pour savoir quel medium est selectionne au clique
-                        
-//                        uneCase.on("click", function() {
-//                            // on veut que lorsqu un medium est clique, mettre son id qui est l id de l element uneCase dans la requete au cas ou l utilisateur demande un rdv avec le medium en question
-//                        })
-                        
-                        if(cte === 3) {
-                            table.appendChild(ligne) // on ajoute la ligne remplie au tableau
-                            ligne = document.createElement("tr") // on reprend une nouvelle ligne
-                            cte = 0 // reset le compteur
+                let xmlhttp = new XMLHttpRequest(); //Construction de la request
+                xmlhttp.open("GET", "./ActionServlet?todo=afficherListeMedium", true); //Lancer la requête
+                
+                xmlhttp.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
+                        console.log("test");
+                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
+                        //Recuperation des JsonArray
+                        // affichage de la liste des mediums
+                        let table = $("#listeMediums"); // on get la table dans le document HTML
+                        let listeMediums = jsonResponse.listeMediums; 
+                        let cte = 0; // compteur pour le nombre de meduims par ligne
+                        let ligne = $("<tr></tr>"); // une ligne dans le tableau
+                        for(let i = 0; i < listeMediums.length; i++) { // pcq 3 mediums par ligne
+                            let uneCase = $("<th></th>");
+                            let title = $("<h1></h1>");
+                            $(title).text(listeMediums[i].nom);
+                            let presentation = $("<p></p>");
+                            $(presentation).text(listeMediums[i].presentation);
+                            uneCase.append(title);
+                            uneCase.append(presentation);
+                            $(uneCase).attr('id', listeMediums[i].id); // identifiant de la case est id du medium pour savoir quel medium est selectionne au clique
+                            
+                            uneCase.on("click", function() {
+                                // on veut que lorsqu un medium est clique, mettre son id qui est l id de l element uneCase dans la requete au cas ou l utilisateur demande un rdv avec le medium en question
+                                alert("test");
+                                // TODO faire le pop up
+                                
+                            })
+                            if(cte === 3) {
+                                table.append(ligne); // on ajoute la ligne remplie au tableau
+                                ligne = $("<tr></tr>"); // on reprend une nouvelle ligne
+                                cte = 0; // reset le compteur
+                            }
+                            ligne.append(uneCase); // on ajoute la case a la ligne
+                            cte++; // on met a jour le nombre de cases dans la ligne
                         }
-                        
-                        ligne.appendChild(uneCase) // on ajoute la case a la ligne
-                        cte++ // on met a jour le nombre de cases dans la ligne
+                        table.append(ligne);
                     }
-                    
-                })
-                .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                    console.log('Error',error); // LOG dans Console Javascript
-                    alert("Erreur lors de l'appel fgfgfgffgfg");
-                })
-                .always( function () { // Fonction toujours appelée
-
-                });
+                };    
+                xmlhttp.send(null);   
             });
         </script>
     </body>
