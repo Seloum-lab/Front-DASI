@@ -13,6 +13,8 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./CSS/global.css" />
         <link rel="stylesheet" type="text/css" href="./CSS/loginbanniere.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/connexion.css" />
+
     </head>
     <body>
         <div id = "banniere_haut" class = "banniere">
@@ -23,25 +25,15 @@ and open the template in the editor.
         
         <div id = "connexion">
             <h1>Connexion</h1>
-            <input type="text" id="champ-login" size="40" value ="Email" />
-            <input type="password" id="champ-password" value ="Mot de Passe" />
+            <input type="text" id="champ-login" size="40" placeholder ="Email" />
+            <input type="password" id="champ-password" placeholder ="Mot de Passe" />
+            
+            <button id = "bouton_connexion">Se connecter</button>
             
             
             
-        </div>
+        </div>        
 
-
-        
-        <!-- Champs et Bouton de Formulaire -->
-        <p id="utilisateur"></p>
-        Identifiant: <input type="text" id="champ-login" size="40" />
-        <br/>
-        Mot de passe: <input type="password" id="champ-password" />
-        <br/>
-        <button id="bouton-connexion">Connexion</button>
-        
-        <!-- Lien vers l'accueil -->
-        <p><a href="index.html">Retour à la page d'Accueil</a></p>
         
          <div id = banniere_bas class = "banniere">
             <p>Copyrigth 2024 Predict'IF - All rights reserved</p>
@@ -53,7 +45,11 @@ and open the template in the editor.
                 xmlhttp.open("GET", "./ActionServlet?todo=disconnect", true); //Lancer la requête
                 
                 
-                $('#bouton-connexion').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+                $("#inscrire").on("click", function() {
+                    window.location = "./signup.html";
+                    
+                });
+                $('#bouton_connexion').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                     console.log("clic sur le bouton de connexion"); // LOG dans Console Javascript
 
@@ -83,7 +79,8 @@ and open the template in the editor.
                             }
                         }
                         else {
-                            $('#notification').value = "";
+                            // TODO pop up?
+                            $("#champ-password").val("");
                         }
                     })
                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX

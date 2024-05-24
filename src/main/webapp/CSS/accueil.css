@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : sbenbouzid
 */
 #accroche {
+    z-index : 10;
     position : fixed;
     background:  white;
     width : 100%;
@@ -19,7 +20,8 @@ and open the template in the editor.
     border-width: 2px;
 }
 
-#accroche * {
+#accroche *{
+    z-index : inherit;
     color : rgb(125 135 250);
     font-size: 2.8em;
     text-align:  center;
@@ -28,11 +30,14 @@ and open the template in the editor.
 }
 
 #mediums {
+    z-index : -1;
     position : relative;
     top : 12em;
 }
 
 #mediums h1 {
+    position : relative;
+    z-index : inherit;
     color : black;
     font-size : 2.5em;
     font-family: Arial, sans-serif;
@@ -40,6 +45,8 @@ and open the template in the editor.
 }
 
 #mediums div {
+    position : relative;
+    z-index : inherit;
     position : relative;
     border-color : rgb(125 135 250);
     border-width: 2px;
@@ -49,6 +56,11 @@ and open the template in the editor.
     margin-bottom: 20px;
 }
 
+
+#mediums * {
+    z-index : inherit;
+}
 #medium #name {
+    
     
 }

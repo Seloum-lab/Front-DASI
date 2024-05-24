@@ -8,11 +8,18 @@ and open the template in the editor.
     Author     : sbenbouzid
 */
 
+
+
 .banniere {
+    z-index : 10;
     background: rgb(125 135 250);
     width: 100%;
     position: fixed;
     left : 0;
+}
+
+.banniere * {
+    z-index: inherit;
 }
 
 #Predictif {
