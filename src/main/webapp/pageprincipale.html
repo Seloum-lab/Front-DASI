@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Page d'accueil</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./CSS/global.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/loginbanniere.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/accueil.css" />
+    </head>
+    <body>
+        <div id = "banniere_haut" class = "banniere">
+            <h1 id = "Predictif">Predict'IF</h1>
+            <button id = "connecter" class = "bouton_barre">Se connecter</button>
+            <button id ="inscrire" class = "bouton_barre">S'inscrire</button>
+        </div>
+        
+        
+        
+        <div id ="accroche">
+            <h1>Des prédictions précises, pour un avenir sans surprise !</h1>
+            
+        </div>
+        
+        
+        
+        <div id = "mediums">
+            <h1>Nos mediums :</h1>
+        </div>
+        
+        
+        <div id = banniere_bas class = "banniere">
+            <p>Copyrigth 2024 Predict'IF - All rights reserved</p>
+        </div>
+            
+        
+        
+        <script>
+            $(document).ready(function() {
+                
+                $("#connecter").on("click", function() {
+                    
+                    window.location = "./login.html";
+                    
+                });
+                
+                $("#inscrire").on("click", function() {
+                    window.location = "./signup.html";
+                });
+                
+            });
+            
+            let xmlhttp = new XMLHttpRequest(); //Construction de la request
+                xmlhttp.open("GET", "./ActionServlet?todo=accueil", true); //Lancer la requête
+                
+                
+                
+                xmlhttp.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
+                        console.log(xmlhttp.responseText);
+                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
+                        
+                        const jsonMediums = jsonResponse.medium_liste;
+                        
+                        for (const element of jsonMediums) {
+                            console.log("medium mdr");
+                            let cadre = document.createElement("div");
+                            cadre.setAttribute("class", "medium");
+                            
+                            
+                            let name = document.createElement("p");
+                            name.setAttribute("class", "name");
+                            name.textContent = element.nom;
+                            cadre.appendChild(name);
+                            
+                            let comment = document.createElement("p");
+                            comment.setAttribute("class", "comment");
+                            comment.textContent = element.commentaire;
+                            cadre.appendChild(comment);
+                            
+                            document.getElementById("mediums").appendChild(cadre);
+                            
+                        }
+                        
+                    }
+                    
+                };
+                xmlhttp.send(null);
+            
+            
+            
+            
+        </script>
+            
+        
+    </body>
+</html>

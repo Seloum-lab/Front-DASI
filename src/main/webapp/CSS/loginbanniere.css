@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 mai 2024, 18:41:16
+    Author     : sbenbouzid
+*/
+
+#banniere_haut button {
+    background: rgb(125 135 250);
+    border-radius: 16px;
+    color : white;
+    border-color :white;
+    border-width: 3px;
+    border-style : solid;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+    width : 100px;
+    position : absolute;
+    top : 4em;
+
+}
+
+#inscrire {
+    right: 30px;
+}
+
+#connecter {
+    right :180px;
+    
+}
+

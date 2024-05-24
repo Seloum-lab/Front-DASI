@@ -5,6 +5,7 @@
  */
 package Controleur;
 
+import View.AccueilSerialize;
 import View.AffichageClientSerialization;
 import View.AffichageListeMediumSerialization;
 import View.AfficherConsultationClient;
@@ -113,6 +114,15 @@ public class ActionServlet extends HttpServlet {
                     AfficherConsultationClient affichageHistoriqueSerialization = new AfficherConsultationClient();
                     affichageHistoriqueSerialization.serialize(request, response);
                     break;
+                    
+                case "accueil" :
+                    System.out.println("------------------------------------ accueil"); 
+                    AccueilAction accueil = new AccueilAction();
+                    accueil.execute(request);
+                    AccueilSerialize accueilserialize = new AccueilSerialize();
+                    accueilserialize.serialize(request, response);
+                    break;
+                    
                     
       
             }
