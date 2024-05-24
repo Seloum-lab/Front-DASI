@@ -7,6 +7,7 @@ package Controleur;
 
 import View.AffichageClientSerialization;
 import View.AffichageListeMediumSerialization;
+import View.AfficherConsultationClient;
 import View.DemanderConsultationSerialization;
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
@@ -102,17 +103,18 @@ public class ActionServlet extends HttpServlet {
                     System.out.println("------------------------------------ deconnexion"); 
                     DeconnexionAction deconnexion = new DeconnexionAction();
                     deconnexion.execute(request);
-                    
                     break;
                     
                     
+                case "historique_client" :
+                    System.out.println("------------------------------------ historique client"); 
+                    AffichageConsultation affichageHistorique = new AffichageConsultation();
+                    affichageHistorique.execute(request);
+                    AfficherConsultationClient affichageHistoriqueSerialization = new AfficherConsultationClient();
+                    affichageHistoriqueSerialization.serialize(request, response);
+                    break;
                     
-
-                    
-                    
-                    
-                    
-                    
+      
             }
             
             

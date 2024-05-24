@@ -10,10 +10,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
     </head>
     <body>
-        <h1>Historique des consultations</h1>
+        <h1>Historique Employe</h1>
         
         <table id = "table">
             <tr>
@@ -43,6 +42,10 @@ and open the template in the editor.
                             let dateCell = document.createElement("td");
                             dateCell.textContent = element.date;
                             row.appendChild(dateCell);
+                            
+                            let commentCell = document.createElement("td");
+                            commentCell.textContent = element.commentaire;
+                            row.appendChild(commentCell);
 
                             let mediumCell = document.createElement("td");
                             mediumCell.textContent = element.medium;

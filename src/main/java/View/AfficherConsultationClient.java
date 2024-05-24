@@ -11,9 +11,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import metier.modele.Consultation;
 
 
@@ -30,19 +34,30 @@ public class AfficherConsultationClient extends Serialization{
         JsonObject container = new JsonObject();
         
         JsonArray consultationListJson = new JsonArray();
+        HttpSession session = req.getSession();
+        Long id = (Long) session.getAttribute("ID");
         
         List<Consultation> consultationList = (List<Consultation>) req.getAttribute("consultation_liste");
+        String pattern = "MM/dd/yyyy HH:mm";
+
+
+        DateFormat df = new SimpleDateFormat(pattern);
         
         for (Consultation consultation : consultationList) {
-            JsonObject consultationJson = new JsonObject();
-            //consultationJson.addProperty("date", consultation.getDateConsultation()); //TODO : gérer la date en la convertissant n une string
-            consultationJson.addProperty("medium", consultation.getMedium().getDenomination());
-            consultationJson.addProperty("commentaire", consultation.getCommentaire());
-            
-            consultationListJson.add(consultationJson);
+            if (Objects.equals(consultation.getEmployee().getId(), id)) {
+                String date = df.format(consultation.getDateConsultation());
+                JsonObject consultationJson = new JsonObject();
+                //consultationJson.addProperty("date", consultation.getDateConsultation()); //TODO : gérer la date en la convertissant n une string
+                consultationJson.addProperty("medium", consultation.getMedium().getDenomination());
+                consultationJson.addProperty("date", date);
+
+                consultationListJson.add(consultationJson);
+            } else {
+            }
         }
         
         container.add("consultation_liste", consultationListJson);
+        
         
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;

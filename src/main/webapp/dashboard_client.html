@@ -27,6 +27,14 @@ and open the template in the editor.
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=load_dashboardClient", true); //Lancer la requête
                 
+                $("#historique").on("click", function() {
+                    window.location = "./historiqueclient.html";
+                });
+                
+                $("#demande_consult").on("click", function() {
+                    window.location = "./historiqueemploye";
+                });
+                
                 
                 
                 xmlhttp.onreadystatechange = function() { //Handler pour la réponse

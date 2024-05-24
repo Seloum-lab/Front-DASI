@@ -11,6 +11,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,18 +26,26 @@ public class AfficherConsultationEmploye extends Serialization{
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        // Il n'y a pas de service qui me permet d'obtenir la liste de consultation d'un employe en aprticulier et dans le rapport
+        //Il n'est pas précisé que je doive le faire moi donc je vais juste afficher toutes les consultations
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();
         
         JsonArray consultationListJson = new JsonArray();
+        String pattern = "MM/dd/yyyy HH:mm";
+
+
+        DateFormat df = new SimpleDateFormat(pattern);
         
         List<Consultation> consultationList = (List<Consultation>) req.getAttribute("consultation_liste");
         
         for (Consultation consultation : consultationList) {
+            String date = df.format(consultation.getDateConsultation());
             JsonObject consultationJson = new JsonObject();
             //consultationJson.addProperty("date", consultation.getDateConsultation()); //TODO : gérer la date en la convertissant n une string
             consultationJson.addProperty("medium", consultation.getMedium().getDenomination());
             consultationJson.addProperty("commentaire", consultation.getCommentaire());
+            consultationJson.addProperty("date", date);
             
             consultationListJson.add(consultationJson);
         }
