@@ -6,25 +6,22 @@
 package Controleur;
 
 import javax.servlet.http.HttpServletRequest;
-import metier.modele.Client;
 import metier.modele.Consultation;
 import metier.service.Service;
 
 /**
  *
- * classe pour l initialisation de la page de consultation 
+ * Classe pour indiquer la fin de la consultation
  */
-public class ConsultationInitAction extends Action {
+class FinirConsultationAction extends Action {
 
     @Override
-    public void execute(HttpServletRequest req){
-        Service service = new Service();
+    public void execute(HttpServletRequest req) {
+        Service service = new Service(); 
         Long idConsultation = (Long) req.getAttribute("idConsultation");
         Consultation cons = service.rechercherConsultationById(idConsultation);
         
-        Client c = cons.getClient();
-        
-        req.setAttribute("client", c);
-        req.setAttribute("prenomMedium", cons.getMedium().getDenomination());
+        service.finirConsultation(cons);
     }
+    
 }

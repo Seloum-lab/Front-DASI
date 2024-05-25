@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Consultation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    </head>
+    <header>
+        <nav>
+            <h1>Predict'IF</h1>
+            <h1>Consultation</h1>
+            <div id='profilUtilisateur'></div>
+        </nav>
+    </header>
+    <body>
+        <div id="infoMedium">
+            <p id="prenomMedium">Medium incarne: </p>
+        </div>
+        
+        <div id="infoClient">
+            <table>
+                <tr>
+                    <th>
+                        <img src="" alt="photo de profile">
+                    </th>
+                    <th>
+                        <div id="prenomClient"></div>
+                        <div id="informationPersonnelles">
+                            <p id="age">Age: </p>
+                            <p id="telephone">Telephone: </p>
+                            <p id="profilAstral">Profil Astral: </p>
+                        </div>
+                    </th>
+                    <th>
+                        <a href="./historiqueclient.html">
+                            <button id="historiqueClient" class="button">Historique client</button>
+                        </a>
+                        <button id="buttonPret" class="button">Pret</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="range" id="amour" name="amour" min="1" max="4">
+                        <p class="title">Amour</p>
+                        <div class="score">
+                            <div class="number">1</div>
+                            <div class="number">2</div>
+                            <div class="number">3</div>
+                            <div class="number">4</div>
+                        </div>
+                    </th>
+                    
+                    <th>
+                        <input type="range" id="amour" name="amour" min="1" max="4">
+                        <p class="title">Sante</p>
+                        <div class="score">
+                            <div class="number">1</div>
+                            <div class="number">2</div>
+                            <div class="number">3</div>
+                            <div class="number">4</div>
+                        </div>
+                    </th>
+                    
+                    <th>
+                        <input type="range" id="amour" name="amour" min="1" max="4">
+                        <p class="title">Travail</p>
+                        <div class="score">
+                            <div class="number">1</div>
+                            <div class="number">2</div>
+                            <div class="number">3</div>
+                            <div class="number">4</div>
+                        </div>
+                    </th>                        
+                </tr>
+                <tr>
+                    <th>
+                        <button id="generer" class="button">Generer</button>
+                        <button id="finConsultation" class="button">Finir consultation</button>
+                    </th>
+                    <th>
+                        <div id="predAmour" class="predictions">Prediction en amour...</div>
+                        <div id="predSante" class="predictions">Prediction sur la sante...</div>
+                        <div id="predTravail" class="predictions">Prediction sur le travail...</div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <footer>
+        <div id = banniere_bas class = "banniere">
+            <p>Copyrigth 2024 Predict'IF - All rights reserved</p>
+        </div>
+        <div id="forTest">
+            <input type="number" id="cons" name="cons">
+            <button id="lancerTest">submit test</button>
+        </div>
+    </footer>
+    
+    <script>
+        let idCons = $("#cons").val(); // id de la consultation sur laquelle on fait les test
+        
+        $("#lancerTest").on("click", function() {
+            // on lance la requete ajax 
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'pageConsultation',
+                    idCons: idCons
+                },
+                dataType: 'json'
+            })
+            .done( function (response) { 
+                console.log("Response: " + response);  
+                let prenomMedium = response.prenomMedium;
+                let prenomClient = response.prenomClient; 
+                let ageClient = response.age;
+                let telClient = response.tel;
+                let profilClient = response.signeZodiaque + ", "+ response.signeChinois + ", " + response.couleurPorteBonheur + ", " + response.animalTotem;
+                
+                $("#prenomMedium").text($("#prenomMedium").val() + prenomMedium); 
+                $("#prenomClient").text(prenomClient); 
+                $("#age").text($("#age").val() + ageClient); 
+                $("#tel").text($("#tel").val() + telClient); 
+                $("#profilAstral").text($("#profilAstral").val() + profilClient); 
+            });
+        })
+        
+        
+        $("#buttonPret").on("click", function() {
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'signalerClient',
+                    idConsultation: idCons
+                },
+                dataType: 'json'
+            });
+        })
+        
+         
+    </script>
+</html>

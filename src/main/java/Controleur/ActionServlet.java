@@ -134,7 +134,7 @@ public class ActionServlet extends HttpServlet {
                     break;
                 
                 case "initPageConsultation" :
-                    System.out.println("--------------------------------- page de consultation"); 
+                    System.out.println("--------------------------------- pageConsultation"); 
                     ConsultationInitAction consInit = new ConsultationInitAction();
                     consInit.execute(request); 
                     ConsultationInitSerialize consSerialisation = new ConsultationInitSerialize(); 
@@ -142,13 +142,24 @@ public class ActionServlet extends HttpServlet {
                     break;
                 
                 case "genererPrediction" :
-                    System.out.println("--------------------------------- generation de prediction"); 
+                    System.out.println("--------------------------------- generationPrediction"); 
                     GenerePredictionAction pred = new GenerePredictionAction();
                     pred.execute(request); 
                     GenerePredictionSerialization predSerialisation = new GenerePredictionSerialization(); 
                     predSerialisation.serialize(request, response);
                     break;
-      
+                
+                case "signalerClient" :
+                    System.out.println("--------------------------------- signalerClient"); 
+                    SignalerClientAction sig = new SignalerClientAction();
+                    sig.execute(request); // pas de serialisation pcq pas de donnes a recupere
+                    break;
+                    
+                case "finirConsutation" :
+                    System.out.println("--------------------------------- finConsultation"); 
+                    FinirConsultationAction finCons = new FinirConsultationAction();
+                    finCons.execute(request); // pas de donnes en reponse
+                    break;
             }
             
             

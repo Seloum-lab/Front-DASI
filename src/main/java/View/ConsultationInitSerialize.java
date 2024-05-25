@@ -32,7 +32,8 @@ public class ConsultationInitSerialize extends Serialization {
         
         container.addProperty("age", c.getAge());
         container.addProperty("tel", c.getTelephone());
-        container.addProperty("prenom", c.getPrenom());
+        container.addProperty("prenomClient", c.getPrenom());
+        container.addProperty("prenomMedium", (String)req.getAttribute("prenomMedium"));
         
         profil.addProperty("signeZodiaque", prfAstro.getSigneZodiaque());
         profil.addProperty("signeChinois", prfAstro.getSigneChinois());

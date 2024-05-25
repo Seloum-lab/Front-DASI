@@ -6,25 +6,22 @@
 package Controleur;
 
 import javax.servlet.http.HttpServletRequest;
-import metier.modele.Client;
 import metier.modele.Consultation;
 import metier.service.Service;
 
 /**
  *
- * classe pour l initialisation de la page de consultation 
+ * classe pour signaler au client le debut de l appel
  */
-public class ConsultationInitAction extends Action {
+class SignalerClientAction extends Action {
 
     @Override
-    public void execute(HttpServletRequest req){
-        Service service = new Service();
+    public void execute(HttpServletRequest req) {
+        Service service = new Service(); 
         Long idConsultation = (Long) req.getAttribute("idConsultation");
         Consultation cons = service.rechercherConsultationById(idConsultation);
         
-        Client c = cons.getClient();
-        
-        req.setAttribute("client", c);
-        req.setAttribute("prenomMedium", cons.getMedium().getDenomination());
+        service.indiquerPretClient(cons);
     }
+    
 }
