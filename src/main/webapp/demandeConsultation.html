@@ -43,8 +43,8 @@ and open the template in the editor.
         <table id="listeMediums"></table>
         <div id="messagexBoxCustom">
             <div id="messageBoxContenu">
-                <h1 id="nomMediumConfirmBox">test</h1>
-                <p id="presentationMediumConfirmBox">test</p>
+                <h1 id="nomMediumConfirmBox"></h1>
+                <p id="presentationMediumConfirmBox"></p>
                 <button id="buttonRetour">Retour</button>
                 <button id="buttonConsulter">Consulter</button>
             </div>
@@ -55,7 +55,7 @@ and open the template in the editor.
             $("#buttonRetour").on("click", function() {
                 // button retour sur la message box
                 // on cache la message box
-                $("#messageBoxCustom").css("display", "none");
+                $("#messageBoxCustom").toggle();
             }); 
             
             $("#buttonConsulter").on("click", function() {
@@ -74,8 +74,12 @@ and open the template in the editor.
                     })
                     .done( function (response) { 
                         // TODO check si la consultation a bien ete prise, sinon notifier l utilisateur
-                        console.log("Response : " + response); 
-                        if(response.)
+                        console.log("Response: " + response.demandeConsultation);  
+                        if(response.demandeConsultation) { 
+                            alert("Votre demande a bien ete prise en compte. Vous avez pris un rendez vous"); 
+                        } else {
+                            alert("Erreur lors de la demande. Votre rendez vous n a pas abouti");
+                        } 
                     })
                     .fail( function (error) { 
                         // TODO
@@ -83,6 +87,7 @@ and open the template in the editor.
                     .always( function () { // Fonction toujours appelée
                         // TODO
                     });
+                $("#messageBoxCustom").toggle();
             })
             
             $(document).ready( function () {
@@ -108,12 +113,15 @@ and open the template in the editor.
                             $(presentation).text(listeMediums[i].presentation);
                             uneCase.append(title);
                             uneCase.append(presentation);
-                            $(uneCase).attr('id', listeMediums[i].id); // identifiant de la case est id du medium pour savoir quel medium est selectionne au clique
+                            $(uneCase).attr('idMedium', listeMediums[i].id); // identifiant de la case est id du medium pour savoir quel medium est selectionne au clique
                             
                             uneCase.on("click", function() {
                                 // on veut que lorsqu un medium est clique, mettre son id qui est l id de l element uneCase dans la requete au cas ou l utilisateur demande un rdv avec le medium en question
-                                $("#messagexBoxCustom").css("display", "block"); 
-                                idMediumPourLaConsultation = $(uneCase).attr("id"); // on met l id du medium clique
+                                tabData = ($(event.currentTarget)).children(); // fils de la case qui a ete cliquee
+                                $("#messagexBoxCustom").show(); 
+                                idMediumPourLaConsultation = $(uneCase).attr("idMedium"); // on met l id du medium clique
+                                $("#nomMediumConfirmBox").text($(tabData[0]).text());
+                                $("#presentationMediumConfirmBox").text($(tabData[1]).text());                                
                             })
                             if(cte === 3) {
                                 table.append(ligne); // on ajoute la ligne remplie au tableau
