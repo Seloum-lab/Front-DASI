@@ -35,6 +35,7 @@ public class AccueilSerialize extends Serialization {
             
             mediumJson.addProperty("nom", medium.getDenomination());
             mediumJson.addProperty("commentaire", medium.getPresentation());
+            mediumJson.addProperty("genre", medium.getGenre());
             
             mediumListJson.add(mediumJson);
         }

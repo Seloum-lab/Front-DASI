@@ -18,9 +18,6 @@ and open the template in the editor.
     left : 0;
 }
 
-.banniere * {
-    z-index: inherit;
-}
 
 #Predictif {
     position : fixed;
@@ -28,6 +25,7 @@ and open the template in the editor.
     color: white;
     font-family: Arial, sans-serif;
     left : 1%;
+    top : -20px;
 
 }
 

@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25 mai 2024, 19:29:54
+    Author     : sbenbouzid
+*/
+
+#titre-page {
+    position : fixed;
+    font-weight: bold;
+    font-size : 3.5em;
+    color: white;
+    font-family: Arial, sans-serif;
+    left : 50%;
+    top : -10px;
+    transform: translate(-50%);
+}
+
+#profil-photo {
+    position : fixed;
+    right : 80px;
+    top : 20px;
+}
+
+#nom {
+    position : absolute;
+    color : white;
+    font-size : 1.2em;
+    font-weight: 100;
+    top : 20px;
+    right : 150px;
+    font-family: Arial, sans-serif;
+    max-width: 200px;
+}
+

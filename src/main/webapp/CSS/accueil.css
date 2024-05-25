@@ -52,10 +52,14 @@ and open the template in the editor.
     position : relative;
     border-color : rgb(125 135 250);
     border-width: 2px;
-    border-radius: 16px;
+    border-radius: 30px;
     border-style : solid;
     position : relative;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
+    width : 75%;
+    height : 200px;
+    left : 50%;
+    transform: translate(-50%);
 
 }
 
@@ -63,7 +67,27 @@ and open the template in the editor.
 #mediums * {
     z-index : inherit;
 }
-#medium #name {
+.name {
+    position: relative;
+    top : -200px;
+    left : 225px;
+    font-weight: bold;
+    font-size : 1.5em;
+}
+
+.comment {
+    position : relative;
+    left : 225px;
+    top : -175px;
     
+}
+
+img {
+    position: relative;
+    top: 0;
+    left : 0;
+    height : 200px;
+    width : 200px;
+    border-radius: 30px;
     
 }
