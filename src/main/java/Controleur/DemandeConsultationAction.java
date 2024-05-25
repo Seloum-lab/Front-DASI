@@ -20,7 +20,8 @@ public class DemandeConsultationAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req) {
-        HttpSession session = req.getSession(true);
+        HttpSession session = req.getSession();
+        System.out.println(session);
         System.out.println("Demande de consultation action pour :" + (Long) session.getAttribute("ID") + " " + Long.parseLong(req.getParameter("idMedium")));
         Service service = new Service();
         

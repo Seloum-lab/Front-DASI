@@ -88,7 +88,7 @@ and open the template in the editor.
                         // TODO
                     });
                 $("#messageBoxCustom").toggle();
-            })
+            });
             
             $(document).ready( function () {
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
@@ -122,7 +122,7 @@ and open the template in the editor.
                                 idMediumPourLaConsultation = $(uneCase).attr("idMedium"); // on met l id du medium clique
                                 $("#nomMediumConfirmBox").text($(tabData[0]).text());
                                 $("#presentationMediumConfirmBox").text($(tabData[1]).text());                                
-                            })
+                            });
                             if(cte === 3) {
                                 table.append(ligne); // on ajoute la ligne remplie au tableau
                                 ligne = $("<tr></tr>"); // on reprend une nouvelle ligne

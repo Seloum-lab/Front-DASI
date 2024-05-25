@@ -11,6 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     </head>
     <header>
         <!--La navbar qui redirige vers d'autres pages-->
@@ -26,20 +27,16 @@ and open the template in the editor.
     <body>
         <h1>Tableau de bord</h1>
         <div id = "carte"></div>
-        <div id = "top_medium">
-            <p>Top 5 mediums</p>
-            <ul>
-                <li id = "top1"></li>
-                <li id = "top2"></li>
-                <li id = "top3"></li>
-                <li id = "top4"></li>
-                <li id = "top5"></li>
-            </ul>
-        </div>
+        
+        
+        
+        
         <div id = "repartition_employe"></div>
         <div id = "repartition_medium"></div>
         
         <div id="map" style="height: 600px; width: 80%; margin: 0 auto;"></div>
+        
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         
         <script type="text/javascript">
 
@@ -137,11 +134,7 @@ and open the template in the editor.
                         let total = 0;
                          
                         //Parcours du top 5 medium et actualisation du HTML
-                        for (let i = 0; i<5 && i<jsonMedium.length; i++) {
-                            $("#top" + (i+1)).text(jsonMedium[i].nom);
- 
-                            //Probleme avec le back des autres, top 5 medium pas toujours 5 !
-                        }
+                        
 
                         //Parcours de la repartition de consultation par employe et remplissage du dataSource pour la pie chart 
                         for (const element of jsonRepartEmploye) {
@@ -154,6 +147,50 @@ and open the template in the editor.
                             let obj = {x: "" + element.id + " : " + element.nom, y : element.nombre_consultations};
                             dataSourceMedium.push(obj);
                         }
+                        
+                        const xValues = [];
+                        for (let i = 0; i<5 && i<jsonMedium.length; i++) {
+        
+                            xValues.push("Top " + (i+1) + ": " + jsonMedium[i].nom);
+ 
+                            //Probleme avec le back des autres, top 5 medium pas toujours 5 !
+                        }
+                        const yValues = [100, 80, 60, 40, 20];
+                        const barColors = "white";
+                        const borderColor = "rgba(125, 135, 250, 1)";
+
+                        new Chart("myChart", {
+                          type: "bar",
+                          data: {
+                            labels: xValues,
+                            datasets: [{
+                              backgroundColor: barColors,
+                              borderColor : borderColor,
+                              borderWidth: 1,
+                              data: yValues
+                            }]
+                          },
+                          options: {
+                                legend: {display: false},
+                                title: {
+                                  display: true,
+                                  text: "Meilleurs mediums"
+                                },
+                                scales: {
+                                  yAxes: [{
+                                    display : false,
+                                    ticks: {
+                                      beginAtZero: true, // Pour commencer l'axe y à zéro
+                                      suggestedMin: 0, // Valeur minimale suggérée pour l'axe y
+                                      suggestedMax: Math.max(...yValues) + 10 // Valeur maximale suggérée pour l'axe y (ajout de 10 pour donner de l'espace)
+                                    },
+                                    gridLines: {
+                                      display: false // Pour cacher les lignes de la grille de fond
+                                    }
+                                  }]
+                                }
+                          }
+                        });
                         var pieEmploye = new ej.charts.AccumulationChart({
                             //Initializing Series
                             title: "Repartition des consultations par employes (Total : " + total + ")",
