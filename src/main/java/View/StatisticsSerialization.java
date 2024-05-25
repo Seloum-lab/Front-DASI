@@ -47,7 +47,10 @@ public class StatisticsSerialization extends Serialization {
         
         for (Client client : clientList) {
             JsonObject clientJson = new JsonObject();
-            clientJson.addProperty("id", client.getId());
+            clientJson.addProperty("nom", client.getNom());
+            clientJson.addProperty("genre", client.getGenre());
+            clientJson.addProperty("lat", client.getLatitude());
+            clientJson.addProperty("lng", client.getLongitude());
             
             clientListJson.add(clientJson);
         }

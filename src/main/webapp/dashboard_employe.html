@@ -39,6 +39,76 @@ and open the template in the editor.
         <div id = "repartition_employe"></div>
         <div id = "repartition_medium"></div>
         
+        <div id="map" style="height: 600px; width: 80%; margin: 0 auto;"></div>
+        
+        <script type="text/javascript">
+
+            var googleMapInstance = null;
+
+            function makeInfoWindow(title) {
+                return new google.maps.InfoWindow({
+                    content: '<div>Information: ' + title + '</div>'
+                });
+            }
+
+            function attachInfoWindow(marker, infowindow, htmlDescription) {
+                marker.addListener('click', function () {
+
+                    infowindow.setContent(htmlDescription);
+                    infowindow.open(googleMapInstance, this);
+                });
+            }
+
+            function initMap() {
+
+                googleMapInstance = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 45.7601424, lng: 4.8961779},
+                    zoom: 5
+                });
+
+                
+               
+
+                // Simuler un appel AJAX (attente 5s)
+                setTimeout(
+                        function() {},
+                        5000
+                        );
+            }
+
+            function generateMarkers(lat, lng, genre, nom) {
+
+                // Petite popup Google Maps
+                var infowindow = makeInfoWindow('');
+
+
+                
+
+                var iconImage = null; // marker par défaut
+                var title;
+                if (genre === "homme") title = "Notre cher client ";
+                else title = "Notre chère cliente ";
+
+
+                var marker = new google.maps.Marker({
+                    map: googleMapInstance,
+                    position: {lat: lat , lng: lng},
+                    title: title + nom,
+                    icon: iconImage
+                });
+
+                attachInfoWindow(
+                        marker, infowindow,
+                        '<div><strong><a href="./endroit.html?' + '">Endroit #' +  '</a></strong><br/>Ceci est l\'endroit charmant numéro '  + '<br/>' + 'Incroyable !' + '</div>'
+                        );
+                
+
+            }
+
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhf3JleYpal9S-xouJYH8lf7Dvz5Y2Nko&callback=initMap">
+        </script>
+        
         <script>
             $(document).ready( function () {
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
@@ -53,6 +123,13 @@ and open the template in the editor.
                         const jsonMedium = jsonResponse.medium_liste;
                         const jsonRepartEmploye = jsonResponse.repartition_employe;
                         const jsonRepartMedium = jsonResponse.repartition_medium;
+                        const jsonClient = jsonResponse.client_liste;
+                        
+                        for (const element of jsonClient) {
+                            generateMarkers(parseFloat(element.lat), parseFloat(element.lng), element.genre, element.nom);   
+                            console.log("Un client a été ajouté à lat :" + element.lat + " et long : " + element.lng);
+                        }
+                            
                         
                         //Initialisation des valeurs pour le pie chart
                         let dataSourceEmploye = [];

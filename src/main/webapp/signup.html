@@ -9,32 +9,52 @@ and open the template in the editor.
         <title>Inscription</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./CSS/global.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/loginbanniere.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/signup.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <body>
-        <h1>Inscription</h1>
+        <div id = "banniere_haut" class = "banniere">
+            <h1 id = "Predictif">Predict'IF</h1>
+            <button id = "connecter" class = "bouton_barre">Se connecter</button>
+            <button id ="inscrire" class = "bouton_barre">S'inscrire</button>
+        </div>
         
-        <p id="notification">Veuillez saisir vos informations</p>
-        <br/>
+        <div id = "inscription">
+            <h1>Inscription</h1>
+            <input required type="text" id="champ-nom" size="40" placeholder ="Nom" />
+            <input required type="text" id="champ-prenom" size="40" placeholder ="Prénom" />
+            <input required type="text" id="champ-genre" size="40" placeholder ="Genre(M/F)" />
+            <input required type="text" id="champ-datenaissance" size="40" placeholder ="Date de naissance" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+            <input required type="text" id="champ-addresse" size="40" placeholder ="Adresse" />
+            <input required type="text" id="champ-codepostale" size="40" placeholder ="Code postale" />
+            <input required type="text" id="champ-ville" size="40" placeholder ="Ville" />
+            <input required type="text" id="champ-telephone" size="40" placeholder ="Téléphone" />
+            <input required type="text" id="champ-mail" size="40" placeholder ="Mail" />
+            <input required type="password" id="champ-mdp" placeholder ="Mot de Passe" />
+            
+            <button id = "bouton_inscription">S'inscrire</button>
+            
+            
+            
+        </div>      
         
-        Nom :<input type="text" id="champ-nom" /><br/>
-        Prénom :<input type="text" id="champ-prenom" /><br/>
-        Genre :<input type="text" id="champ-genre" /><br/>
-        Date de naissance :<input type="date" id="champ-datenaissance" /><br/>
-        Addresse :<input type="text" id="champ-addresse" /><br/>
-        Code postal :<input type="number" id="champ-codepostale" /><br/>
-        Ville :<input type="text" id="champ-ville" /><br/>
-        Téléphone :<input type="tel" id="champ-telephone" /><br/>
-        Mail :<input type="email" id="champ-mail" /><br/>
-        Mot de Passe : <input type="password" id="champ-mdp" /><br/>
-        
-        <button id="bouton-inscription">Inscription</button>
-        
-        <p><a href="index.html">Retour à la page d'Accueil</a></p>
+
+         <div id = banniere_bas class = "banniere">
+            <p>Copyrigth 2024 Predict'IF - All rights reserved</p>
+        </div>
         
         
         <script>
             $(document).ready( function () {
+                $("#connecter").on("click", function() {
+                    window.location = "./login.html";
+                    
+                });
+                
+                
+                
                 $('#bouton-inscription').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                     console.log("clic sur le bouton d'inscription"); // LOG dans Console Javascript
