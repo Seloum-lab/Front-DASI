@@ -98,6 +98,14 @@ public class ActionServlet extends HttpServlet {
                     affichageMediumSerialization.serialize(request, response);
                     break;
                     
+                case "prendreRdvConsultation" : // dans cette partie, on cree la demande de consultation
+                    System.out.println("-------------------------------------- Demande de la consultation en cours");
+                    DemandeConsultationAction demande = new DemandeConsultationAction(); 
+                    demande.execute(request);
+                    DemanderConsultationSerialization consultationSerialization = new DemanderConsultationSerialization(); 
+                    consultationSerialization.serialize(request, response);
+                    break; 
+                    
                 case "disconnect" :
                     System.out.println("------------------------------------ deconnexion"); 
                     DeconnexionAction deconnexion = new DeconnexionAction();

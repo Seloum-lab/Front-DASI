@@ -16,11 +16,75 @@ and open the template in the editor.
         <h1>Demande de consultation</h1>
         <div id='profilUtilisateur'></div>
         <a href='dashboard_client.html'>Retour</a>
+        
+        <style>
+            #messagexBoxCustom {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                justify-content: center;
+                align-items: center;
+            }
+
+            #messageBoxContenu {
+                background-color: white;
+                padding: 20px;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+        </style>
     </header>
     <body>
         <table id="listeMediums"></table>
+        <div id="messagexBoxCustom">
+            <div id="messageBoxContenu">
+                <h1 id="nomMediumConfirmBox">test</h1>
+                <p id="presentationMediumConfirmBox">test</p>
+                <button id="buttonRetour">Retour</button>
+                <button id="buttonConsulter">Consulter</button>
+            </div>
+        </div>
         
         <script>
+            let idMediumPourLaConsultation = null; // une fois la case clique, on met l id du medium en question qui se trouve dans lid de la case pour ensuite le passe au button confirm qui fait la requete ajax
+            $("#buttonRetour").on("click", function() {
+                // button retour sur la message box
+                // on cache la message box
+                $("#messageBoxCustom").css("display", "none");
+            }); 
+            
+            $("#buttonConsulter").on("click", function() {
+                // envoyer une requet ajax avec lid du medium en question
+                let xhr = new XMLHttpRequest(); 
+                xhr.open("GET", "./ActionServlet?todo=demandeRendezVous" ,true);
+                
+                $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'prendreRdvConsultation',
+                            idMedium: idMediumPourLaConsultation
+                        },
+                        dataType: 'json'
+                    })
+                    .done( function (response) { 
+                        // TODO check si la consultation a bien ete prise, sinon notifier l utilisateur
+                        console.log("Response : " + response); 
+                        if(response.)
+                    })
+                    .fail( function (error) { 
+                        // TODO
+                    })
+                    .always( function () { // Fonction toujours appelée
+                        // TODO
+                    });
+            })
+            
             $(document).ready( function () {
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=afficherListeMedium", true); //Lancer la requête
@@ -48,9 +112,8 @@ and open the template in the editor.
                             
                             uneCase.on("click", function() {
                                 // on veut que lorsqu un medium est clique, mettre son id qui est l id de l element uneCase dans la requete au cas ou l utilisateur demande un rdv avec le medium en question
-                                alert("test");
-                                // TODO faire le pop up
-                                
+                                $("#messagexBoxCustom").css("display", "block"); 
+                                idMediumPourLaConsultation = $(uneCase).attr("id"); // on met l id du medium clique
                             })
                             if(cte === 3) {
                                 table.append(ligne); // on ajoute la ligne remplie au tableau
