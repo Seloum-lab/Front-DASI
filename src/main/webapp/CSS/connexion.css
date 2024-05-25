@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 mai 2024, 22:01:05
+    Author     : sbenbouzid
+*/
+
+
+#connexion {
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-color :  rgb(125 135 250);
+    border-radius: 16px;
+    top : 9em;
+    width : 65em;
+    margin-left: auto;
+    margin-right: auto;
+    height : 25em;
+    
+    
+}
+
+#connexion h1 {
+
+    color : white;
+    position : relative;
+    background: rgb(125 135 250);
+    height : 50px;
+    line-height: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    left: auto;
+    right: auto;
+    top : -25px;;
+    border-radius : 16px;
+    border-style : solid;
+    border-color: rgb(125 135 250);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    
+}
+
+#bouton_connexion {
+    position : absolute;
+    background: rgb(125 135 250);
+    color : white;
+    font-family: Arial, sans-serif;
+    border-color:  rgb(125 135 250);
+    border-width: 2px;
+    border-radius : 25px;
+    border-style : solid;
+    text-align: center;
+    bottom : 10%;
+    left : 50%;
+    transform: translate(-50%);
+    height: 60px;
+    width: 200px;
+    font-size : 1em;
+}
+#champ-login {
+    position : absolute;
+    border-radius : 50px;
+    border-style :solid;
+    text-indent: 10px;
+    font-size : 1.2em;
+    align-content: center;
+    height : 70px;
+    width : 700px;
+    left : 50%;
+    transform: translate(-50%);
+    
+}
+
+#champ-password {
+    position : absolute;
+    top : 50%;
+    margin : 0 auto;
+    border-radius : 50px;
+    font-size : 1.2em;
+    border-style :solid;
+    text-indent: 10px;
+    height : 70px;
+    width : 700px;
+    left : 50%;
+    transform: translate(-50%);
+
+    
+}
+
+#connecter {
+    border-color : yellow !important;
+}

@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 mai 2024, 18:03:19
+    Author     : sbenbouzid
+*/
+
+
+
+.banniere {
+    z-index : 10;
+    background: rgb(125 135 250);
+    width: 100%;
+    position: fixed;
+    left : 0;
+}
+
+.banniere * {
+    z-index: inherit;
+}
+
+#Predictif {
+    position : fixed;
+    font-size: 3em;
+    color: white;
+    font-family: Arial, sans-serif;
+    left : 1%;
+
+}
+
+#banniere_bas {
+    bottom: 0;
+}
+
+#banniere_haut {
+    height : 6em;
+    top : 0;
+    margin-bottom: 20px;
+
+}
+#banniere_bas p {
+    color: white;
+    font-size : 0.7em;
+    text-align:  center;
+    justify-content: center;
+    
+}
