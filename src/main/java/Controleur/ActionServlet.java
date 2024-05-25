@@ -9,7 +9,9 @@ import View.AccueilSerialize;
 import View.AffichageClientSerialization;
 import View.AffichageListeMediumSerialization;
 import View.AfficherConsultationClient;
+import View.ConsultationInitSerialize;
 import View.DemanderConsultationSerialization;
+import View.GenerePredictionSerialization;
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
@@ -130,8 +132,22 @@ public class ActionServlet extends HttpServlet {
                     AccueilSerialize accueilserialize = new AccueilSerialize();
                     accueilserialize.serialize(request, response);
                     break;
-                    
-                    
+                
+                case "initPageConsultation" :
+                    System.out.println("--------------------------------- page de consultation"); 
+                    ConsultationInitAction consInit = new ConsultationInitAction();
+                    consInit.execute(request); 
+                    ConsultationInitSerialize consSerialisation = new ConsultationInitSerialize(); 
+                    consSerialisation.serialize(request, response);
+                    break;
+                
+                case "genererPrediction" :
+                    System.out.println("--------------------------------- generation de prediction"); 
+                    GenerePredictionAction pred = new GenerePredictionAction();
+                    pred.execute(request); 
+                    GenerePredictionSerialization predSerialisation = new GenerePredictionSerialization(); 
+                    predSerialisation.serialize(request, response);
+                    break;
       
             }
             

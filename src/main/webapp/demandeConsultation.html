@@ -60,9 +60,7 @@ and open the template in the editor.
             
             $("#buttonConsulter").on("click", function() {
                 // envoyer une requet ajax avec lid du medium en question
-                let xhr = new XMLHttpRequest(); 
-                xhr.open("GET", "./ActionServlet?todo=demandeRendezVous" ,true);
-                
+              
                 $.ajax({
                         url: './ActionServlet',
                         method: 'POST',
