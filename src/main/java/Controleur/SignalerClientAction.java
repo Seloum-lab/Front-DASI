@@ -19,7 +19,7 @@ class SignalerClientAction extends Action {
     public void execute(HttpServletRequest req) {
         Service service = new Service(); 
         Long idConsultation = (Long) req.getAttribute("idConsultation");
-        Consultation cons = service.rechercherConsultationById(idConsultation);
+        Consultation cons = service.rechercherConsultationParID(idConsultation);
         
         service.indiquerPretClient(cons);
     }

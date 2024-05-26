@@ -25,6 +25,13 @@ and open the template in the editor.
     top : 20px;
 }
 
+#navbarre {
+    position : fixed;
+    right : 20px;
+    top : 20px;
+    color : white;
+}
+
 #nom {
     position : absolute;
     color : white;

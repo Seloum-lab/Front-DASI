@@ -20,7 +20,7 @@ public class ConsultationInitAction extends Action {
     public void execute(HttpServletRequest req){
         Service service = new Service();
         Long idConsultation = (Long) req.getAttribute("idConsultation");
-        Consultation cons = service.rechercherConsultationById(idConsultation);
+        Consultation cons = service.rechercherConsultationParID(idConsultation);
         
         Client c = cons.getClient();
         
