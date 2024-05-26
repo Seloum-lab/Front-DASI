@@ -1,0 +1,122 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 mai 2024, 14:33:02
+    Author     : sbenbouzid
+*/
+
+
+#carte {
+    position : relative;
+    top : 100px;
+    width : 90%;
+    left : 50%;
+    transform: translate(-50%);
+    background-color: rgb(125 135 250);
+    border-style: solid;
+    border-color: rgb(125 135 250);
+    border-radius: 60px;
+    height : 450px;
+}
+
+#carte h1 {
+    text-indent: 60px;
+    font-size: 40px !important;
+}
+
+
+
+
+#graphs h1, #carte h1{
+    position : absolute;
+    top : 0;
+    color : white;
+    font-weight: bold;
+    font-size : 20px;
+    height: 10%;
+    top : -20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    
+}
+
+#map {
+    position : absolute;
+    bottom: 0;
+    border-color: rgb(125 135 250);
+    border-style: solid;
+    border-radius: 60px;
+    left : 50%;
+    transform: translate(-50%);
+}
+
+#graphs {
+    position : relative;
+    top :200px;
+    width : 90%;
+    height : 400px;
+    left : 50%;
+    transform: translate(-50%);
+}
+
+
+#top {
+    position : relative;
+    height: 100%;
+    width : 30%;
+    left : 0%;
+    background-color: rgb(125 135 250);
+    border-style: solid;
+    border-color: rgb(125 135 250);
+    border-radius: 60px;
+    top : 0px;
+}
+
+#top canvas {
+    position: absolute;
+    height: 80% !important;
+    border-radius: 60px;
+    left : 50%;
+    transform: translate(-50%);
+    background-color: white; 
+    bottom : 0;
+    
+}
+
+#repartition_medium {
+    position : absolute;
+    height: 100%;
+    width : 30%;
+    left : 35%;
+    background-color: rgb(125 135 250);
+    border-style: solid;
+    border-color: rgb(125 135 250);
+    border-radius: 60px;
+    top : -400px;
+}
+
+#repartition_employe {
+    position : absolute;
+    height: 100%;
+    width : 30%;
+    left : 69%;
+    background-color: rgb(125 135 250);
+    border-style: solid;
+    border-color: rgb(125 135 250);
+    border-radius: 60px;
+    top : -800px;
+}
+
+
+#repartition_employe svg, #repartition_medium svg {
+    position : absolute;
+    background-color: white;
+    border-color: transparent;
+    border-radius: 60px;
+    height: 80%;
+    bottom: 0 !important;
+}
