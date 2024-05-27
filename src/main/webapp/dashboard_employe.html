@@ -153,8 +153,7 @@ and open the template in the editor.
                 xmlhttp.onreadystatechange = function() { //Handler pour la réponse
                     let DONE = 4, OK = 200;
                     if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
-                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
-                        //Recuperation des JsonArray
+                        
                         const jsonMedium = jsonResponse.medium_liste;
                         const jsonRepartEmploye = jsonResponse.repartition_employe;
                         const jsonRepartMedium = jsonResponse.repartition_medium;

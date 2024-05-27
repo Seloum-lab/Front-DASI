@@ -33,6 +33,8 @@ public class AfficherConsultationClient extends Serialization{
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();
         
+        container.addProperty("connected", (String) req.getAttribute("connected"));
+        
         JsonArray consultationListJson = new JsonArray();
         HttpSession session = req.getSession();
         Long id = (Long) session.getAttribute("ID");

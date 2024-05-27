@@ -27,6 +27,8 @@ public class LoadDashboardClientSerialization extends Serialization {
         JsonObject container = new JsonObject();
         JsonObject profilAstroJson = new JsonObject();
         
+        container.addProperty("connected", (String) req.getAttribute("connected"));
+        
         //Récupération des attributs depuis la requête
         String name = (String) req.getAttribute("name");
         ProfilAstro profilAstro = (ProfilAstro) req.getAttribute("profil_astro");

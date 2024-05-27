@@ -32,6 +32,8 @@ public class StatisticsSerialization extends Serialization {
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();
         
+        container.addProperty("connected", (String) req.getAttribute("connected"));
+        
         String nom = (String) req.getAttribute("nom");
         container.addProperty("nom", nom);
         List<Client> clientList = (List<Client>) req.getAttribute("liste_client");

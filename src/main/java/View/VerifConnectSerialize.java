@@ -12,29 +12,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import metier.modele.Consultation;
 
 /**
  *
- * classe utilise pour serialise la demande de consultation
- * pour savoir si la demande la consultation a aboutie ou pas, il suffit de regarde la propriete consultation dans la res
+ * @author sbenbouzid
  */
-public class DemanderConsultationSerialization extends Serialization {
+public class VerifConnectSerialize extends Serialization{
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
         Gson gson = new GsonBuilder().serializeNulls().create();
-        JsonObject container = new JsonObject();   
+        JsonObject container = new JsonObject();
+
+        container.addProperty("connected", (Boolean) req.getAttribute("connected"));
         
-        container.addProperty("connected", (String) req.getAttribute("connected"));
-        
-        Boolean statusDemandeConsultation = (Boolean) req.getAttribute("demandeConsultation");
-        container.addProperty("demandeConsultation", statusDemandeConsultation); // true si la consultation est prise, faux sinon
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;
 
-        out = res.getWriter(); // on met la consultation dans la requete    
+        out = res.getWriter();
         out.println(gson.toJson(container));
-        out.close();
-    }    
+        out.close();    
+    }
+    
 }

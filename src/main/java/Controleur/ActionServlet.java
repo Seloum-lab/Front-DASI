@@ -19,6 +19,7 @@ import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
 import View.StatisticsSerialization;
+import View.VerifConnectSerialize;
 import dao.JpaUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -117,6 +118,14 @@ public class ActionServlet extends HttpServlet {
                     System.out.println("------------------------------------ deconnexion"); 
                     DeconnexionAction deconnexion = new DeconnexionAction();
                     deconnexion.execute(request);
+                    break;
+                    
+                case "verifconnected" :
+                    System.out.println("------------------------------------ deconnexion"); 
+                    VerifConnectAction verifconnect = new VerifConnectAction();
+                    verifconnect.execute(request);
+                    VerifConnectSerialize verifconnectser = new VerifConnectSerialize();
+                    verifconnectser.serialize(request, response);
                     break;
                     
                     

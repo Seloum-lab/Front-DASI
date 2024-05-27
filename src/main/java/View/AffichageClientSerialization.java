@@ -25,7 +25,9 @@ public class AffichageClientSerialization extends Serialization{
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
         Gson gson = new GsonBuilder().serializeNulls().create();
-        JsonObject container = new JsonObject();   
+        JsonObject container = new JsonObject();  
+        
+        container.addProperty("connected", (String) req.getAttribute("connected"));
         
         List<Client> clientList = (List<Client>) req.getAttribute("liste_client");
         JsonArray clientListJson = new JsonArray();

@@ -1,0 +1,152 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27 mai 2024, 17:28:24
+    Author     : sbenbouzid
+*/
+
+
+table {
+    position: absolute;
+    width: 95%;
+    left : 50%;
+    transform: translate(-50%);
+    top : 200px;
+    z-index : 0;
+}
+
+table * {z-index: inherit;}
+
+
+
+#code-couleur {
+    position : fixed;
+    width: 100%;
+    left : 0px;
+    background-color: white;
+    border-style: solid; 
+    border-color : black;
+    border-width: 3px;
+    top : 6em;
+    font-family: Arial, sans-serif;
+    height: 6em;
+    z-index: 1;
+
+}
+
+
+
+#code-couleur h1 {
+    position: fixed;
+    color : rgb(125 135 250); 
+    left : 300px;
+    
+}
+
+#code-couleur p {
+    position : fixed;
+    top : 90px;
+    border-radius: 30px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-weight: bold;
+    width: 250px;
+    color: rgb(125 135 250);
+}
+
+#cartomancien {
+    background-color: pink;
+    right: 10px;
+}
+
+#spirite {
+    background-color:  lightgoldenrodyellow;
+    right: 300px;
+}
+
+#astrologue {
+    background-color: chartreuse;
+    right: 590px;
+}
+#messagexBoxCustom {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    
+}
+
+#messageBoxContenu {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10 !important;
+}
+
+div[type = "cartomancien"] {
+    background-color: pink;
+}
+
+div[type = "spirite"] {
+    background-color: lightgoldenrodyellow;
+    
+}
+
+div[type = "astrologue"] {
+    background-color: chartreuse;
+}
+
+.medium {
+    border-style: solid;
+    border-color: rgb(125 135 250);
+    position : relative;
+    border-radius: 60px;
+    height: 300px;
+    width: 600px;
+}
+
+.medium h1 {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    width: 40%;
+    right: 25%;
+    transform: translate(50%);
+}
+
+.medium p {
+    position: absolute;
+    color: black;
+    width: 40%;
+    right: 25%;
+    transform: translate(50%);
+    top : 40%;
+    transform: translate(50%, -50%);
+    
+}
+
+img {
+    position: absolute;
+    border-radius: 60px;
+    height: 100%;
+    left : 0px;
+}

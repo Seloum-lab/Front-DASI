@@ -14,7 +14,9 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.modele.Astrologue;
 import metier.modele.Medium;
+import metier.modele.Spirite;
 
 /**
  *
@@ -27,6 +29,8 @@ public class AffichageListeMediumSerialization extends Serialization {
             Gson gson = new GsonBuilder().serializeNulls().create();
             JsonObject container = new JsonObject();
             JsonArray mediumsListJson = new JsonArray();
+            
+            container.addProperty("connected", (String) req.getAttribute("connected"));
 
             if(mediums != null) { // donc pas d'exeption pendant l'execution du service dans le back
                 // on parcours la liste des mediums pour les mettre dans le JSON array
@@ -35,7 +39,13 @@ public class AffichageListeMediumSerialization extends Serialization {
                     JsonObject mediumJson = new JsonObject();
                     mediumJson.addProperty("nom", med.getDenomination());
                     mediumJson.addProperty("presentation", med.getPresentation());
-                    mediumJson.addProperty("id", med.getId());
+                    if (med instanceof Astrologue)
+                        mediumJson.addProperty("type", "astrologue");
+                    else if (med instanceof Spirite)
+                        mediumJson.addProperty("type", "spirite");
+                    else
+                        mediumJson.addProperty("type", "cartomancien");
+                    mediumJson.addProperty("genre", med.getGenre());
                     // TODO ajouter encore des propriete s'il en manque*
 
                     mediumsListJson.add(mediumJson); // on ajoute les mediums a la liste 

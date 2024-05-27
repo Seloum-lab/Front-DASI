@@ -45,6 +45,28 @@ and open the template in the editor.
                     window.location = "./dashboard_client.html"
                     
                 });
+                
+                
+                
+                let xmlhttp_test = new XMLHttpRequest(); //Construction de la request
+                xmlhttp_test.open("GET", "./ActionServlet?todo=verifconnected", true); //Lancer la requête
+                
+                xmlhttp_test.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp_test.readyState === DONE && xmlhttp_test.status === OK) {
+                        
+                        let jsonResponse = JSON.parse(xmlhttp_test.responseText); //parsing du Json
+                        
+                        if (jsonResponse.connected === false)
+                            window.location = "./pageprincipale.html";
+                        
+                    }
+                };
+                
+                xmlhttp_test.send(null);
+                
+                
+                
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=historique_client", true); //Lancer la requête
                 
@@ -53,8 +75,9 @@ and open the template in the editor.
                 xmlhttp.onreadystatechange = function() { //Handler pour la réponse
                     let DONE = 4, OK = 200;
                     if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
-                        console.log(xmlhttp.responseText);
+                        
                         let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
+                        
                         
                         const jsonConsultations = jsonResponse.consultation_liste;
                         

@@ -31,6 +31,8 @@ public class AfficherConsultationEmploye extends Serialization{
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();
         
+        container.addProperty("connected", (String) req.getAttribute("connected"));
+        
         JsonArray consultationListJson = new JsonArray();
         String pattern = "MM/dd/yyyy HH:mm";
 
