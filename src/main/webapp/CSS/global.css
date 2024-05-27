@@ -11,7 +11,7 @@ and open the template in the editor.
 
 
 .banniere {
-    z-index : 10;
+    z-index : 4;
     background: rgb(125 135 250);
     width: 100%;
     position: fixed;

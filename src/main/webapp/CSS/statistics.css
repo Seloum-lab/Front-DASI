@@ -8,7 +8,6 @@ and open the template in the editor.
     Author     : sbenbouzid
 */
 
-
 #carte {
     position : relative;
     top : 100px;
@@ -27,17 +26,26 @@ and open the template in the editor.
     font-size: 40px !important;
 }
 
-
-
-
-#graphs h1, #carte h1{
+#carte h1{
     position : absolute;
-    top : 0;
     color : white;
     font-weight: bold;
     font-size : 20px;
     height: 10%;
     top : -20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 100%; 
+}
+
+
+#graphs h1{
+    position : absolute;
+    color : white;
+    font-weight: bold;
+    font-size : 20px;
+    height: 5%;
+    top : 0px;
     font-family: Arial, sans-serif;
     text-align: center;
     width: 100%;
@@ -58,7 +66,7 @@ and open the template in the editor.
     position : relative;
     top :200px;
     width : 90%;
-    height : 400px;
+    height : 500px;
     left : 50%;
     transform: translate(-50%);
 }
@@ -78,7 +86,7 @@ and open the template in the editor.
 
 #top canvas {
     position: absolute;
-    height: 80% !important;
+    height: 87% !important;
     border-radius: 60px;
     left : 50%;
     transform: translate(-50%);
@@ -96,7 +104,7 @@ and open the template in the editor.
     border-style: solid;
     border-color: rgb(125 135 250);
     border-radius: 60px;
-    top : -400px;
+    top : -500px;
 }
 
 #repartition_employe {
@@ -108,7 +116,7 @@ and open the template in the editor.
     border-style: solid;
     border-color: rgb(125 135 250);
     border-radius: 60px;
-    top : -800px;
+    top : -1000px;
 }
 
 
@@ -117,6 +125,6 @@ and open the template in the editor.
     background-color: white;
     border-color: transparent;
     border-radius: 60px;
-    height: 80%;
+    height: 87%;
     bottom: 0 !important;
 }
