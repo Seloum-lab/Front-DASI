@@ -1,0 +1,90 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 mai 2024, 20:26:50
+    Author     : sbenbouzid
+*/
+
+#container {
+    position : relative;
+    width: 95%;
+    height : 800px;
+    top : 100px;
+    left : 50%;
+    transform: translate(-50%);
+    
+}
+
+.first-row {
+    background-color: lightgray;
+    font-weight: bold;
+    height: 75px !important;   
+    font-size: 1.4em;
+}
+
+
+.data {
+    background-color: white;
+    font-weight: normal;
+    height: 100px;
+}
+
+.empty {
+    background-color: white;
+    font-weight: normal;
+    height: 60px;
+    
+}
+
+#container h1 {
+    text-align: center;
+    background-color: rgb(125 135 250);
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    height: 50px;
+    text-height: 50px;
+    line-height: 50px;
+}
+table * {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    overflow: auto;
+    
+    
+    
+
+}
+
+table  {
+    position : absolute;
+    width: 100%;
+    height: 750px;
+    top : 50px;
+    border-collapse: collapse;
+    overflow: auto;
+
+}
+
+#retour {
+    position: absolute;
+    background-color: rgb(125 135 250);
+    border-style : solid;
+    border-radius : 60px;
+    border-color : rgb(125 135 250);
+    width : 300px;
+    height : 80px;
+    color : white;
+    font-family: Arial, sans-serif;
+    font-size : 1em;
+    font-weight: bold;
+    font-size: 20px;
+    bottom: 100px;
+    right: 0px;
+}

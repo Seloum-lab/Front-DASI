@@ -1,0 +1,107 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 mai 2024, 20:36:34
+    Author     : sbenbouzid
+*/
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10 !important;
+}
+
+.nav-bar {
+    position : fixed;
+    height : 100%;
+    z-index : 11;
+    display: none;
+    background-color: white;
+    top: 40px;
+    right : 0;
+    width: 35%;
+    top : 0;
+    border-top-left-radius : 60px; 
+    border-bottom-left-radius: 60px;
+    
+}
+
+.nav-bar * {
+    position: inherit;
+    z-index: inherit;
+}
+.nav-bar ul {
+    list-style-type: none;
+    height: 100%;
+}
+
+.nav-bar ul li {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-bar ul li a {
+    border-style: solid;
+    border-radius: 60px;
+    font-size : 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    width : 20%;
+    right: 5%;
+    
+}
+
+#deconnexion {
+    border-color: red;
+    color : white;
+    background-color: red;
+    top : 250px;
+    
+}
+
+#historique, #liste-client {
+    border-color : rgb(125 135 250);
+    background-color: rgb(125 135 250);
+    color : white;
+}
+
+#accueil {
+    border-color: rgb(125 135 250);
+    color : rgb(125 135 250);
+    background-color: white;
+    top : 25px;
+}
+
+#historique {
+    top : 100px;
+}
+
+#liste-client{
+    top : 175px;
+}
+
+#croix {
+    height: 100%;
+    border-color: transparent;
+    border-top-left-radius : 30px; 
+    border-bottom-left-radius: 30px;
+    background-color: rgb(125 135 250);
+    top : 0;
+    z-index: 12;
+}
+
+
+

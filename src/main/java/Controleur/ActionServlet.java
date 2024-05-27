@@ -9,6 +9,7 @@ import View.AccueilSerialize;
 import View.AffichageClientSerialization;
 import View.AffichageListeMediumSerialization;
 import View.AfficherConsultationClient;
+import View.AfficherConsultationEmploye;
 import View.ConsultationInitSerialize;
 import View.DemanderConsultationSerialization;
 import View.EnvoyerCommentaireSerialisation;
@@ -133,6 +134,14 @@ public class ActionServlet extends HttpServlet {
                     accueil.execute(request);
                     AccueilSerialize accueilserialize = new AccueilSerialize();
                     accueilserialize.serialize(request, response);
+                    break;
+                    
+                case "historique_employe" :
+                    System.out.println("------------------------------------ historique employe"); 
+                    AffichageConsultation affichageHisto = new AffichageConsultation();
+                    affichageHisto.execute(request);
+                    AfficherConsultationEmploye afficherHistoriqueserialize = new AfficherConsultationEmploye();
+                    afficherHistoriqueserialize.serialize(request, response);
                     break;
                 
                 case "pageConsultation" :
