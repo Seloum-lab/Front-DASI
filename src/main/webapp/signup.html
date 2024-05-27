@@ -59,10 +59,10 @@ and open the template in the editor.
                 
                 
                 
-                $('#bouton-inscription').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
+                $('#bouton_inscription').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
                     console.log("clic sur le bouton d'inscription"); // LOG dans Console Javascript
-                    $('#notification').html("Inscription..."); // Message pour le paragraphe de notification
+                    
 
                     // Récupération de la valeur des champs du formulaire
                     var champNom = $('#champ-nom').val();
@@ -99,6 +99,7 @@ and open the template in the editor.
                     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
                         if (response.inscription) {
+                            window.location = "./login.html";
                             $('#notification').html("Inscription OK");  // Message pour le paragraphe de notification
                             // TODO: afficher les informations du client dans la notification
                             // Exemple: Connexion de Ada Lovelace (ID 1)
@@ -110,7 +111,7 @@ and open the template in the editor.
                     })
                     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
                         console.log('Error',error); // LOG dans Console Javascript
-                        alert("Erreur lors de l'appel fgfgfgffgfg");
+                        alert("Erreur lors de l'appel");
                     })
                     .always( function () { // Fonction toujours appelée
                         

@@ -25,6 +25,7 @@ public class InscrireUtilisateurAction extends Action{
         String nom = req.getParameter("nom");
         String prenom = req.getParameter("prenom");
         String genre = req.getParameter("genre");
+        String dateString = req.getParameter("date");
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
@@ -33,7 +34,7 @@ public class InscrireUtilisateurAction extends Action{
             Logger.getLogger(InscrireUtilisateurAction.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println(date);
+
         String addresse = req.getParameter("addresse");
         String code = req.getParameter("code");
         String ville = req.getParameter("ville");
