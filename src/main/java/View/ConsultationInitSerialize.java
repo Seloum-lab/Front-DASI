@@ -28,8 +28,10 @@ public class ConsultationInitSerialize extends Serialization {
         JsonObject profil = new JsonObject();
         
         Client c = (Client) req.getAttribute("client"); // on reprend l objet client de la requete
+        System.out.println("id du client est :" + c.getId() + "prenom est : " + c.getPrenom());
         ProfilAstro prfAstro = c.getProfilAstro(); 
         
+        container.addProperty("idClient", c.getId());
         container.addProperty("age", c.getAge());
         container.addProperty("tel", c.getTelephone());
         container.addProperty("prenomClient", c.getPrenom());

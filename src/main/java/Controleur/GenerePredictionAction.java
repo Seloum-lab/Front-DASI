@@ -19,15 +19,18 @@ class GenerePredictionAction extends Action {
     @Override
     public void execute(HttpServletRequest req) {
         Service service = new Service();
-        Long idClient = (Long) req.getAttribute("idClient"); 
+        Long idClient = Long.parseLong(req.getParameter("idClient"));
         Client c = service.rechercherClientParID(idClient); 
         
-        Integer amour = (Integer) req.getAttribute("amour");
-        Integer sante = (Integer) req.getAttribute("sante");
-        Integer travail = (Integer) req.getAttribute("travail");
+        Integer amour = Integer.parseInt(req.getParameter("amour"));
+        Integer sante = Integer.parseInt(req.getParameter("sante"));
+        Integer travail = Integer.parseInt(req.getParameter("travail"));
+        
+        System.out.println("requete recue, client: " + c.getPrenom() + " amour sante travail : " + amour + sante + travail);
         
         try {
             List<String> pred = service.genererPredictions(c, amour, sante, travail);
+            System.out.println("la predictions sur l amour est: " + pred.get(0));
             req.setAttribute("listePredictions", pred);
             System.out.println("predictions bien genere");
         } catch(Exception e) {

@@ -11,6 +11,8 @@ import View.AffichageListeMediumSerialization;
 import View.AfficherConsultationClient;
 import View.ConsultationInitSerialize;
 import View.DemanderConsultationSerialization;
+import View.EnvoyerCommentaireSerialisation;
+import View.FinConsultationSerialization;
 import View.GenerePredictionSerialization;
 import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
@@ -133,7 +135,7 @@ public class ActionServlet extends HttpServlet {
                     accueilserialize.serialize(request, response);
                     break;
                 
-                case "initPageConsultation" :
+                case "pageConsultation" :
                     System.out.println("--------------------------------- pageConsultation"); 
                     ConsultationInitAction consInit = new ConsultationInitAction();
                     consInit.execute(request); 
@@ -141,7 +143,7 @@ public class ActionServlet extends HttpServlet {
                     consSerialisation.serialize(request, response);
                     break;
                 
-                case "genererPrediction" :
+                case "generationPrediction" :
                     System.out.println("--------------------------------- generationPrediction"); 
                     GenerePredictionAction pred = new GenerePredictionAction();
                     pred.execute(request); 
@@ -155,10 +157,22 @@ public class ActionServlet extends HttpServlet {
                     sig.execute(request); // pas de serialisation pcq pas de donnes a recupere
                     break;
                     
-                case "finirConsutation" :
+                case "finConsultation" :
                     System.out.println("--------------------------------- finConsultation"); 
                     FinirConsultationAction finCons = new FinirConsultationAction();
-                    finCons.execute(request); // pas de donnes en reponse
+                    finCons.execute(request); 
+                    FinConsultationSerialization fin = new FinConsultationSerialization(); // pas de donnes dans la reponse mais pour activer la done
+                    fin.serialize(request, response);
+                    break;
+                   
+                case "envoyerCommentaire": 
+                    System.out.println("--------------------------------- envouerCommentaire"); 
+                    EnvoyerCommentaireAction envoi = new EnvoyerCommentaireAction();
+                    envoi.execute(request);
+                    EnvoyerCommentaireSerialisation envoiSer = new EnvoyerCommentaireSerialisation();
+                    envoiSer.serialize(request, response);
+                default:
+                    System.out.println("case not found");
                     break;
             }
             
