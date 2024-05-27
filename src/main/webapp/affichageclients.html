@@ -31,6 +31,7 @@ and open the template in the editor.
                 <li><a href="./dashboard_employe.html" id = "accueil">Accueil</a></li>
                 <li><a href="./historiqueemploye.html" id = "historique">Mes consultations</a></li>
                 <li><a href="./affichageclients.html" id = "liste-client">Liste des clients</a></li> 
+                <li><a href ="./consultation.html" id = "consultation">Consultation</a></li>
                 <li><a href="./pageprincipale.html" id = "deconnexion">Déconnexion</a></li>
             </ul>
             
@@ -87,6 +88,8 @@ and open the template in the editor.
                         let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
                                  
                         const jsonClients = jsonResponse.client_list;
+                        
+                        $("#nom").text(jsonResponse.nom);
                         
                         for (const element of jsonClients) {
                             let row = document.createElement("tr");

@@ -29,6 +29,7 @@ a {
 }
 
 .button {
+    position: absolute;
     width: 200px;
     border-radius: 15px;
     border-width: 3px;

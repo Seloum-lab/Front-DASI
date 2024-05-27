@@ -39,6 +39,7 @@ public class AffichageListeMediumSerialization extends Serialization {
                     JsonObject mediumJson = new JsonObject();
                     mediumJson.addProperty("nom", med.getDenomination());
                     mediumJson.addProperty("presentation", med.getPresentation());
+                    mediumJson.addProperty("id", med.getId());
                     if (med instanceof Astrologue)
                         mediumJson.addProperty("type", "astrologue");
                     else if (med instanceof Spirite)

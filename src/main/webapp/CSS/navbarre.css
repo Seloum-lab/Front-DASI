@@ -68,11 +68,11 @@ and open the template in the editor.
     border-color: red;
     color : white;
     background-color: red;
-    top : 250px;
+    top : 325px;
     
 }
 
-#historique, #liste-client {
+#historique, #liste-client, #consultation{
     border-color : rgb(125 135 250);
     background-color: rgb(125 135 250);
     color : white;
@@ -91,6 +91,10 @@ and open the template in the editor.
 
 #liste-client{
     top : 175px;
+}
+
+#consultation {
+    top : 250px;
 }
 
 #croix {

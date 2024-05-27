@@ -34,6 +34,7 @@ public class AfficherConsultationClient extends Serialization{
         JsonObject container = new JsonObject();
         
         container.addProperty("connected", (String) req.getAttribute("connected"));
+        container.addProperty("nom", (String) req.getAttribute("nom"));
         
         JsonArray consultationListJson = new JsonArray();
         HttpSession session = req.getSession();

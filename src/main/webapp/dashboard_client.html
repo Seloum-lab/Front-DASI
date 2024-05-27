@@ -60,6 +60,28 @@ and open the template in the editor.
         <script>
             $(document).ready(function() {
                 
+                const apiKey = "AIzaSyBodtZPmVtpuJGpcN3SL5QAYQDRkl3cSDw";
+                const cx = "f7de8f4e109ba4054";
+                
+                function searchImage(result, recherche) {
+            const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&searchType=image&q=${recherche}&num=1`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const imageUrl = data.items[0].link;
+                        document.getElementById(result).innerHTML += `<img src="${imageUrl}" height = "200px" width = "200px">`;
+                    } else {
+                        document.getElementById(result).innerHTML = 'No images found';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching image:', error);
+                    document.getElementById(result).innerHTML = 'Error fetching image';
+                });
+        }
+                
                 let xmlhttp_test = new XMLHttpRequest(); //Construction de la request
                 xmlhttp_test.open("GET", "./ActionServlet?todo=verifconnected", true); //Lancer la requête
                 
@@ -117,6 +139,10 @@ and open the template in the editor.
                         image.setAttribute("height", "200px");
                         image.setAttribute("width" , "200px");
                         document.getElementById("conteneur-signe_chinois").appendChild(image);
+                        
+                        searchImage("conteneur-couleur", "couleur" + couleur);
+                        
+                        searchImage("conteneur-animal", animal + " fond blanc");
                         
                         document.getElementById("conteneur-signe_zodiac").appendChild(ligne);
                         $("#conteneur-signe_zodiac").append($("<p>").text(signeZodiac));

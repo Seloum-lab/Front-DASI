@@ -17,14 +17,14 @@ import metier.service.Service;
  *
  * classe utilise pour afficher la liste des consultations
  */
-public class AffichageConsultation extends Action {
+public class AffichageConsultationEmploye extends Action {
 
     @Override
     public void execute(HttpServletRequest req) {
         Service service = new Service();        
         HttpSession session = req.getSession();
         Long id = (Long) session.getAttribute("ID");
-        String nom = service.rechercherClientParID(id).getNom();
+        String nom = service.rechercherEmployeeParID(id).getNom();
         List<Consultation> consultationList = null;
         try {
             consultationList = service.consulterListeConsultations();

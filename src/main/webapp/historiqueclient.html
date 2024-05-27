@@ -31,8 +31,9 @@ and open the template in the editor.
             </tr>
         </table>
         </div>
-        
-        <button id ="retour">Retour</button>
+        <div class = "padding">
+            <button id ="retour">Retour</button>
+        </div>
         
         <div id = banniere_bas class = "banniere">
             <p>Copyrigth 2024 Predict'IF - All rights reserved</p>
@@ -45,6 +46,8 @@ and open the template in the editor.
                     window.location = "./dashboard_client.html"
                     
                 });
+                
+                
                 
                 
                 
@@ -77,6 +80,8 @@ and open the template in the editor.
                     if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
                         
                         let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
+                        
+                        $("#nom").text(jsonResponse.nom);
                         
                         
                         const jsonConsultations = jsonResponse.consultation_liste;

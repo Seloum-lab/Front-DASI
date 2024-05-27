@@ -28,6 +28,7 @@ public class AffichageClientSerialization extends Serialization{
         JsonObject container = new JsonObject();  
         
         container.addProperty("connected", (String) req.getAttribute("connected"));
+        container.addProperty("nom", (String) req.getAttribute("nom"));
         
         List<Client> clientList = (List<Client>) req.getAttribute("liste_client");
         JsonArray clientListJson = new JsonArray();

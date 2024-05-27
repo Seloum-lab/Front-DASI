@@ -147,7 +147,7 @@ public class ActionServlet extends HttpServlet {
                     
                 case "historique_employe" :
                     System.out.println("------------------------------------ historique employe"); 
-                    AffichageConsultation affichageHisto = new AffichageConsultation();
+                    AffichageConsultationEmploye affichageHisto = new AffichageConsultationEmploye();
                     affichageHisto.execute(request);
                     AfficherConsultationEmploye afficherHistoriqueserialize = new AfficherConsultationEmploye();
                     afficherHistoriqueserialize.serialize(request, response);

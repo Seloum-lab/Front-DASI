@@ -7,7 +7,23 @@ and open the template in the editor.
     Created on : 27 mai 2024, 17:28:24
     Author     : sbenbouzid
 */
-
+#retour {
+    position : fixed;
+    color :white;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: red;
+    background-color: red;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    right: 180px;
+    top : 18px;
+    height: 60px;
+    width: 200px;
+    font-size : 19px;
+    
+    
+}
 
 table {
     position: absolute;
@@ -15,7 +31,9 @@ table {
     left : 50%;
     transform: translate(-50%);
     top : 200px;
+    overflow: auto;
     z-index : 0;
+    padding-bottom: 100px;
 }
 
 table * {z-index: inherit;}
@@ -42,8 +60,7 @@ table * {z-index: inherit;}
 #code-couleur h1 {
     position: fixed;
     color : rgb(125 135 250); 
-    left : 300px;
-    
+    left : 10%;    
 }
 
 #code-couleur p {
@@ -73,6 +90,7 @@ table * {z-index: inherit;}
     right: 590px;
 }
 #messagexBoxCustom {
+    border-radius: 60px;
     display: none;
     position: fixed;
     top: 50%;
@@ -80,17 +98,80 @@ table * {z-index: inherit;}
     transform: translate(-50%, -50%);
     width: 80%;
     height: 80%;
+    position: fixed;
+    z-index: 11;
+    height: 70%;
+    width: 80%
+}
+
+#messagexBoxCustom *{
+    position: absolute;
+    z-index: inherit;
+}
+
+#messagexBoxCustom h1{
+    color : black;
+    border-radius: 30px;
+    text-align: center;
+    top : 5%;
+    right: 25%;
+    transform: translate(50%);
+    z-index: 13;
+    font-family: Arial, sans-serif;
+}
+
+#messagexBoxCustom p {
+    top : 25%;
+    right: 25%;
+    transform: translate(50%);
+}
+
+#messagexBoxCustom button {
+    height : 70px;
+    width: 225px;
+    border-radius: 30px;
+    border-style: solid;
+    bottom : 10%;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-width: 3px;
+}
+
+#buttonRetour {
+    right: 12.5%;
+    transform: translate(50%);
+    color : white;
+    background-color: rgb(125 135 250);
+    border-color: rgb(125 135 250);
     
 }
 
+#buttonConsulter {
+    right: 37.5%;
+    transform: translate(50%);
+    background-color: white;
+    color: rgb(125 135 250);
+    border-color: rgb(125 135 250);
+}
+
+#messagexBoxCustom img {
+    width: 50%;
+    height: 100%;
+    
+}
+
+
+
 #messageBoxContenu {
+    
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
 }
 
-.overlay {
+#overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -120,7 +201,6 @@ div[type = "astrologue"] {
     position : relative;
     border-radius: 60px;
     height: 300px;
-    width: 600px;
 }
 
 .medium h1 {
@@ -148,5 +228,6 @@ img {
     position: absolute;
     border-radius: 60px;
     height: 100%;
+    width : 50%;
     left : 0px;
 }

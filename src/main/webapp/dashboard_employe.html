@@ -34,7 +34,9 @@ and open the template in the editor.
                 <li><a href="./dashboard_employe.html" id = "accueil">Accueil</a></li>
                 <li><a href="./historiqueemploye.html" id = "historique">Mes consultations</a></li>
                 <li><a href="./affichageclients.html" id = "liste-client">Liste des clients</a></li> 
+                <li><a href ="./consultation.html" id = "consultation">Consultation</a></li>
                 <li><a href="./pageprincipale.html" id = "deconnexion">Déconnexion</a></li>
+                
             </ul>
             
         </div>
@@ -121,7 +123,7 @@ and open the template in the editor.
 
                 var iconImage = null; // marker par défaut
                 var title;
-                if (genre === "homme") title = "Notre cher client ";
+                if (genre === "homme") title = "Notre cher client :";
                 else title = "Notre chère cliente ";
 
 
@@ -134,7 +136,7 @@ and open the template in the editor.
 
                 attachInfoWindow(
                         marker, infowindow,
-                        '<div><strong><a href="./endroit.html?' + '">Endroit #' +  '</a></strong><br/>Ceci est l\'endroit charmant numéro '  + '<br/>' + 'Incroyable !' + '</div>'
+                        '<div><strong><h3>' + title + '</h3></strong><br/>'  + nom + '</div>'
                         );
                 
 
@@ -146,6 +148,27 @@ and open the template in the editor.
         
         <script>
             $(document).ready( function () {
+                
+                
+                let xmlhttp_test = new XMLHttpRequest(); //Construction de la request
+                xmlhttp_test.open("GET", "./ActionServlet?todo=verifconnected", true); //Lancer la requête
+                
+                xmlhttp_test.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp_test.readyState === DONE && xmlhttp_test.status === OK) {
+                        
+                        let jsonResponse = JSON.parse(xmlhttp_test.responseText); //parsing du Json
+                        
+                        if (jsonResponse.connected === false)
+                            window.location = "./pageprincipale.html";
+                        
+                    }
+                };
+                
+                xmlhttp_test.send(null);
+                
+                
+                
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=statistics", true); //Lancer la requête
                 
@@ -153,6 +176,7 @@ and open the template in the editor.
                 xmlhttp.onreadystatechange = function() { //Handler pour la réponse
                     let DONE = 4, OK = 200;
                     if (xmlhttp.readyState === DONE && xmlhttp.status === OK) {
+                        let jsonResponse = JSON.parse(xmlhttp.responseText); //parsing du Json
                         
                         const jsonMedium = jsonResponse.medium_liste;
                         const jsonRepartEmploye = jsonResponse.repartition_employe;
