@@ -32,7 +32,8 @@ public class StatisticsSerialization extends Serialization {
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject container = new JsonObject();
         
-        
+        String nom = (String) req.getAttribute("nom");
+        container.addProperty("nom", nom);
         List<Client> clientList = (List<Client>) req.getAttribute("liste_client");
         JsonArray clientListJson = new JsonArray();
         
@@ -86,6 +87,7 @@ public class StatisticsSerialization extends Serialization {
             repartEmployeJson.add(coupleEmployeJson);
         }
         container.add("repartition_employe", repartEmployeJson);
+        
         
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out;

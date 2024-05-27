@@ -1,0 +1,166 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26 mai 2024, 11:57:43
+    Author     : sbenbouzid
+*/
+
+#profil {
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-color :  rgb(125 135 250);
+    border-radius: 16px;
+    top : 8em;
+    width : 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    height : 37em;
+    overflow: auto;
+}
+
+#profil div {
+    position : absolute;
+    border-width: 2px;
+    border-style: solid;
+    border-color :  rgb(125 135 250);
+    border-radius: 30px;
+    height : 350px;
+    width : 300px;
+    top : 175px;
+    
+}
+
+#conteneur-signe_zodiac {
+    left : 30px
+}
+
+#conteneur-animal {
+    right : 30px;
+}
+
+#conteneur-signe_chinois {
+    left : 410px;
+}
+
+#conteneur-couleur {
+    right : 410px;
+}
+
+HR {
+    position : absolute;
+    border-color : rgb(125 135 250);
+    border-width: 2px;
+    border-style: solid;
+    width : 298px;
+    left : 0;
+    bottom : 50px;
+    z-index : 2;
+}
+
+#profil div h3 {
+    position :absolute;
+    z-index: 2;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    color : white;
+    background: rgb(125 135 250);
+    border-radius : 30px;;
+    border-style : solid;
+    border-color: rgb(125 135 250); 
+    width : 296px;
+    height : 70px;
+    line-height: 50px;
+    top : -20px; 
+    text-align: center;
+}
+
+#profil div p {
+    position : absolute;
+    left : 50%;
+    transform: translate(-50%);
+    bottom : 10px;
+}
+
+
+
+img {
+    position : absolute;
+    left : 50%;
+    transform: translate(-50%);
+    top : 70px;
+    z-index: 1;
+}
+
+#name {
+    font-weight: bold;
+    color : white;
+    position : relative;
+    background: rgb(125 135 250);
+    height : 70px;
+    line-height: 70px;
+    margin-left: 0;
+    margin-right: 0;
+    left: auto;
+    right: auto;
+    text-align: left;
+    text-indent: 20px;
+    font-size : 60px;
+    top :-40px;
+    border-radius : 16px;
+    border-style : solid;
+    border-color: rgb(125 135 250);
+    font-family: Arial, sans-serif;
+    margin-bottom: 0px;
+
+}
+
+#titre {
+    position : absolute;
+    font-weight: 400;
+    font-size : 50px;
+    color : black;
+    font-family: Arial, sans-serif;
+    top : 50px;
+    left : 20px;
+}
+
+button {
+    position : absolute;
+    background-color: rgb(125 135 250);
+    border-style : solid;
+    border-radius : 60px;
+    border-color : rgb(125 135 250);
+    width : 300px;
+    height : 80px;
+    color : white;
+    font-family: Arial, sans-serif;
+    font-size : 1em;
+    overflow: auto;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#button-div {
+    height: 50px;
+    width : 500px;
+    border-color : transparent;
+    position : relative;
+    padding-bottom: 100px;
+    bottom : -220px;
+    right : -1000px;
+}
+
+
+#demande_consult {
+    right : 20px;
+}
+#historique {
+    right : 350px;
+    
+}
+

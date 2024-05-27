@@ -19,8 +19,7 @@ class FinirConsultationAction extends Action {
     public void execute(HttpServletRequest req) {
         Service service = new Service(); 
         Long idConsultation = Long.parseLong(req.getParameter("idCons"));
-        Consultation cons = service.rechercherConsultationById(idConsultation);
-        
+        Consultation cons = service.rechercherConsultationById(idConsultation);        
         service.finirConsultation(cons);
         req.setAttribute("status", "fin");
     }
