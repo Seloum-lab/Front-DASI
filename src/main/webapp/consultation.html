@@ -21,7 +21,7 @@ and open the template in the editor.
     </header>
     <body>
         <div id="infoMedium">
-            <p id="prenomMedium">Medium incarne: </p>
+            <p id="prenomMedium"></p>
         </div>
         
         <div id="infoClient">
@@ -33,9 +33,9 @@ and open the template in the editor.
                     <th>
                         <div id="prenomClient"></div>
                         <div id="informationPersonnelles">
-                            <p id="age">Age: </p>
-                            <p id="telephone">Telephone: </p>
-                            <p id="profilAstral">Profil Astral: </p>
+                            <p id="age"></p>
+                            <p id="telephone"></p>
+                            <p id="profilAstral"></p>
                         </div>
                     </th>
                     <th>
@@ -58,7 +58,7 @@ and open the template in the editor.
                     </th>
                     
                     <th>
-                        <input type="range" id="amour" name="amour" min="1" max="4">
+                        <input type="range" id="sante" name="sante" min="1" max="4">
                         <p class="title">Sante</p>
                         <div class="score">
                             <div class="number">1</div>
@@ -69,7 +69,7 @@ and open the template in the editor.
                     </th>
                     
                     <th>
-                        <input type="range" id="amour" name="amour" min="1" max="4">
+                        <input type="range" id="travail" name="travail" min="1" max="4">
                         <p class="title">Travail</p>
                         <div class="score">
                             <div class="number">1</div>
@@ -92,6 +92,13 @@ and open the template in the editor.
                 </tr>
             </table>
         </div>
+        
+        <div id="popUp">
+            <h1>Commentaire en fin de consultation</h1>
+            <input required type="text" id="commentaire" name="commentaire" placeholder="Ecrivez votre commentaire ici...">
+            <button id="envoyerCommentaire" class="button">Envoyer</button>
+        </div>
+        
     </body>
     <footer>
         <div id = banniere_bas class = "banniere">
@@ -104,9 +111,12 @@ and open the template in the editor.
     </footer>
     
     <script>
-        let idCons = $("#cons").val(); // id de la consultation sur laquelle on fait les test
-        
+        let idCons = null;
+        let idClient = null;
+        $("#popUp").hide(); // cacher la pop up au debut
         $("#lancerTest").on("click", function() {
+            idCons = $("#cons").val(); // id de la consultation sur laquelle on fait les test
+            console.log("la valeur de la consultation est : " + idCons);
             // on lance la requete ajax 
             $.ajax({
                 url: './ActionServlet',
@@ -118,33 +128,104 @@ and open the template in the editor.
                 dataType: 'json'
             })
             .done( function (response) { 
-                console.log("Response: " + response);  
+                console.log("Response: " + response.age);  
                 let prenomMedium = response.prenomMedium;
                 let prenomClient = response.prenomClient; 
                 let ageClient = response.age;
                 let telClient = response.tel;
-                let profilClient = response.signeZodiaque + ", "+ response.signeChinois + ", " + response.couleurPorteBonheur + ", " + response.animalTotem;
+                let profilClient = response.profilAstro.signeZodiaque + ", "+ response.profilAstro.signeChinois + ", " + response.profilAstro.couleurPorteBonheur + ", " + response.profilAstro.animalTotem;
+                idClient = response.idClient; // mettre de cote pour d autre requetes
                 
-                $("#prenomMedium").text($("#prenomMedium").val() + prenomMedium); 
+                $("#prenomMedium").text("Medium incarne: " + prenomMedium); 
                 $("#prenomClient").text(prenomClient); 
-                $("#age").text($("#age").val() + ageClient); 
-                $("#tel").text($("#tel").val() + telClient); 
-                $("#profilAstral").text($("#profilAstral").val() + profilClient); 
+                $("#age").text("Age: " + ageClient); 
+                $("#telephone").text("Telephone: " + telClient); 
+                $("#profilAstral").text("Profil Astral: " + profilClient); 
             });
         })
         
         
         $("#buttonPret").on("click", function() {
+            console.log("debut de la consultation numero: " + idCons);
             $.ajax({
                 url: './ActionServlet',
                 method: 'POST',
                 data: {
                     todo: 'signalerClient',
-                    idConsultation: idCons
+                    idCons: idCons
                 },
                 dataType: 'json'
             });
         })
+        
+        $("#generer").on("click", function() {
+            let amour = $("#amour").val();
+            let sante = $("#sante").val();
+            let travail = $("#travail").val();
+            console.log("button generer prediction clicked test 2");
+
+            // on lance la requete ajax 
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'generationPrediction',
+                    idClient: idClient,
+                    amour: amour,
+                    sante: sante,
+                    travail: travail
+                },
+                dataType: 'json'
+            })
+            .done( function (response) {
+                console.log("Generation de prediction: " + response);
+                let amour = response.amour; 
+                let sante = response.sante;
+                let travail = response.travail;
+                
+                $("#predAmour").text(amour);
+                $("#predSante").text(sante);
+                $("#predTravail").text(travail);                
+            });
+        })
+        
+        $("#finConsultation").on("click", function() {
+            console.log("fin de la consultation, button actif test 2");
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'finConsultation',
+                    idCons: idCons
+                },
+                dataType: 'json'
+            })
+            .done(function(response) {
+                console.log("fin de la consultation, affichage du pop up");
+                $("#popUp").show();
+            });
+        })
+        
+        $("#envoyerCommentaire").on("click", function() {
+            console.log("button envouer commentaire active");
+            let commentaire = $("#commentaire").val(); // on recupere le commentaire
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'envoyerCommentaire',
+                    idCons: idCons, 
+                    commentaire: commentaire
+                },
+                dataType: 'json'
+            })
+            .done(function(response) {
+                console.log("envoi du commentaire enregistre");
+                // redirection vers la page
+                window.location.href = "./dashboard_employe.html";
+            });
+        })
+        
         
          
     </script>

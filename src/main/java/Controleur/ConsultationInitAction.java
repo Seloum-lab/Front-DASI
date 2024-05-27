@@ -19,11 +19,11 @@ public class ConsultationInitAction extends Action {
     @Override
     public void execute(HttpServletRequest req){
         Service service = new Service();
-        Long idConsultation = (Long) req.getAttribute("idConsultation");
-        Consultation cons = service.rechercherConsultationParID(idConsultation);
-        
-        Client c = cons.getClient();
-        
+
+        Long idConsultation = Long.parseLong(req.getParameter("idCons"));
+        System.out.println("dans la consultation init action, id:" + idConsultation);
+        Consultation cons = service.rechercherConsultationById(idConsultation);    
+        Client c = cons.getClient(); 
         req.setAttribute("client", c);
         req.setAttribute("prenomMedium", cons.getMedium().getDenomination());
     }
