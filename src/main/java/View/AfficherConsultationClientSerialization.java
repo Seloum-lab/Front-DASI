@@ -26,7 +26,7 @@ import metier.modele.Consultation;
  *
  * @author sbenbouzid
  */
-public class AfficherConsultationClient extends Serialization{
+public class AfficherConsultationClientSerialization extends Serialization{
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -47,7 +47,7 @@ public class AfficherConsultationClient extends Serialization{
         DateFormat df = new SimpleDateFormat(pattern);
         
         for (Consultation consultation : consultationList) {
-            if (Objects.equals(consultation.getEmployee().getId(), id)) {
+            if (Objects.equals(consultation.getClient().getId(), id)) {
                 String date = df.format(consultation.getDateConsultation());
                 JsonObject consultationJson = new JsonObject();
                 //consultationJson.addProperty("date", consultation.getDateConsultation()); //TODO : gérer la date en la convertissant n une string

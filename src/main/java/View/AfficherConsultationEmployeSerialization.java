@@ -22,7 +22,7 @@ import metier.modele.Consultation;
  *
  * @author sbenbouzid
  */
-public class AfficherConsultationEmploye extends Serialization{
+public class AfficherConsultationEmployeSerialization extends Serialization{
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {

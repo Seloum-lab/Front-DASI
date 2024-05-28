@@ -5,12 +5,12 @@
  */
 package Controleur;
 
-import View.AccueilSerialize;
+import View.AccueilSerialization;
 import View.AffichageClientSerialization;
 import View.AffichageListeMediumSerialization;
-import View.AfficherConsultationClient;
-import View.AfficherConsultationEmploye;
-import View.ConsultationInitSerialize;
+import View.AfficherConsultationClientSerialization;
+import View.AfficherConsultationEmployeSerialization;
+import View.ConsultationInitSerialization;
 import View.DemanderConsultationSerialization;
 import View.EnvoyerCommentaireSerialisation;
 import View.FinConsultationSerialization;
@@ -19,7 +19,7 @@ import View.InscriptionSerialization;
 import View.LoadDashboardClientSerialization;
 import View.ProfilUtilisateurSerialization;
 import View.StatisticsSerialization;
-import View.VerifConnectSerialize;
+import View.VerifConnectSerialization;
 import dao.JpaUtil;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -124,16 +124,16 @@ public class ActionServlet extends HttpServlet {
                     System.out.println("------------------------------------ deconnexion"); 
                     VerifConnectAction verifconnect = new VerifConnectAction();
                     verifconnect.execute(request);
-                    VerifConnectSerialize verifconnectser = new VerifConnectSerialize();
+                    VerifConnectSerialization verifconnectser = new VerifConnectSerialization();
                     verifconnectser.serialize(request, response);
                     break;
                     
                     
                 case "historique_client" :
                     System.out.println("------------------------------------ historique client"); 
-                    AffichageConsultation affichageHistorique = new AffichageConsultation();
+                    AffichageConsultationClientAction affichageHistorique = new AffichageConsultationClientAction();
                     affichageHistorique.execute(request);
-                    AfficherConsultationClient affichageHistoriqueSerialization = new AfficherConsultationClient();
+                    AfficherConsultationClientSerialization affichageHistoriqueSerialization = new AfficherConsultationClientSerialization();
                     affichageHistoriqueSerialization.serialize(request, response);
                     break;
                     
@@ -141,15 +141,15 @@ public class ActionServlet extends HttpServlet {
                     System.out.println("------------------------------------ accueil"); 
                     AccueilAction accueil = new AccueilAction();
                     accueil.execute(request);
-                    AccueilSerialize accueilserialize = new AccueilSerialize();
+                    AccueilSerialization accueilserialize = new AccueilSerialization();
                     accueilserialize.serialize(request, response);
                     break;
                     
                 case "historique_employe" :
                     System.out.println("------------------------------------ historique employe"); 
-                    AffichageConsultationEmploye affichageHisto = new AffichageConsultationEmploye();
+                    AffichageConsultationEmployeAction affichageHisto = new AffichageConsultationEmployeAction();
                     affichageHisto.execute(request);
-                    AfficherConsultationEmploye afficherHistoriqueserialize = new AfficherConsultationEmploye();
+                    AfficherConsultationEmployeSerialization afficherHistoriqueserialize = new AfficherConsultationEmployeSerialization();
                     afficherHistoriqueserialize.serialize(request, response);
                     break;
                 
@@ -157,7 +157,7 @@ public class ActionServlet extends HttpServlet {
                     System.out.println("--------------------------------- pageConsultation"); 
                     ConsultationInitAction consInit = new ConsultationInitAction();
                     consInit.execute(request); 
-                    ConsultationInitSerialize consSerialisation = new ConsultationInitSerialize(); 
+                    ConsultationInitSerialization consSerialisation = new ConsultationInitSerialization(); 
                     consSerialisation.serialize(request, response);
                     break;
                 

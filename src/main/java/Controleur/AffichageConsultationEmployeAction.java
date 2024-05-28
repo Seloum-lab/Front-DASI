@@ -17,7 +17,7 @@ import metier.service.Service;
  *
  * classe utilise pour afficher la liste des consultations
  */
-public class AffichageConsultationEmploye extends Action {
+public class AffichageConsultationEmployeAction extends Action {
 
     @Override
     public void execute(HttpServletRequest req) {
@@ -29,7 +29,7 @@ public class AffichageConsultationEmploye extends Action {
         try {
             consultationList = service.consulterListeConsultations();
         } catch (Exception ex) {
-            Logger.getLogger(AffichageConsultation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AffichageConsultationClientAction.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         req.setAttribute("consultation_liste", consultationList);

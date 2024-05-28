@@ -19,7 +19,7 @@ import metier.modele.ProfilAstro;
  *
  * Classe utilise pour ordonnes les donnes du client qui seront afficher dans la page de consultation
  */
-public class ConsultationInitSerialize extends Serialization {
+public class ConsultationInitSerialization extends Serialization {
 
     @Override
     public void serialize(HttpServletRequest req, HttpServletResponse res) throws IOException {
