@@ -140,6 +140,26 @@ and open the template in the editor.
     </div>
     
     <script>
+        $(document).ready( function () {
+            let xmlhttp_test = new XMLHttpRequest(); //Construction de la request
+                xmlhttp_test.open("GET", "./ActionServlet?todo=verifconnected", true); //Lancer la requête
+                
+                xmlhttp_test.onreadystatechange = function() { //Handler pour la réponse
+                    let DONE = 4, OK = 200;
+                    if (xmlhttp_test.readyState === DONE && xmlhttp_test.status === OK) {
+                        
+                        let jsonResponse = JSON.parse(xmlhttp_test.responseText); //parsing du Json
+                        
+                        if (jsonResponse.connected === false)
+                            window.location = "./pageprincipale.html";
+                        
+                    }
+                };
+                
+                xmlhttp_test.send(null);
+        });
+    
+    
         let idCons = null;
         let idClient = null;
         $("#popUp").hide(); // cacher la pop up au debut

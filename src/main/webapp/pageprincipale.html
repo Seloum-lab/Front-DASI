@@ -58,6 +58,7 @@ and open the template in the editor.
             
             let xmlhttp_disconnect = new XMLHttpRequest(); //Construction de la request
                 xmlhttp_disconnect.open("GET", "./ActionServlet?todo=disconnect", true); //Lancer la requête
+                xmlhttp_disconnect.send(null);
             
             let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=accueil", true); //Lancer la requête

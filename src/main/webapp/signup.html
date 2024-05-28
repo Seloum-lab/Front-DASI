@@ -51,6 +51,7 @@ and open the template in the editor.
                 
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=disconnect", true); //Lancer la requête
+                xmlhttp.send(null);
                 
                 $("#connecter").on("click", function() {
                     window.location = "./login.html";

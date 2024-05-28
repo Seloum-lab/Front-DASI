@@ -43,6 +43,7 @@ and open the template in the editor.
             $(document).ready( function () {
                 let xmlhttp = new XMLHttpRequest(); //Construction de la request
                 xmlhttp.open("GET", "./ActionServlet?todo=disconnect", true); //Lancer la requête
+                xmlhttp.send(null);
                 
                 
                 $("#inscrire").on("click", function() {
