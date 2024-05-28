@@ -13,6 +13,10 @@ a {
     color:inherit;
 }
 
+body {
+    margin-top: 7%;
+}
+
 #popUp {
     position: fixed;
     top: 0;
@@ -47,22 +51,22 @@ a {
 }
 
 #infoClient img {
+    display: inline-block;
     height: 100px;
     width: 100px;
 }
 
-#infoClient table {
+#infoClient {
     width: 100%;
-}
-
-#caseInfo {
     border: solid;
     border-width: 3px;
     border-color: rgb(125, 135, 250);
+    border-radius: 25px;
 }
 
+
 #prenomClient {
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: rgb(125, 135, 250);
     text-align: left;
     color:white;
@@ -84,14 +88,8 @@ a {
     color:white;
 }
 
-#generer {
-    border-color: rgb(135, 145, 260);
-    background-color: white; 
-}
-
-#finConsultation {
-    background-color: red;
-    color: white;
+.rangeBars {
+    width: 33%;
 }
 
 .number {
@@ -102,15 +100,85 @@ a {
 
 .score {
     background-color: rgb(135, 145, 260);
-    border:solid;
-    boder-radius: 15px;
+    border: 3px;
+    border-radius: 15px;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .title {
     background-color: rgb(135, 145, 260);
     border: solid;
-    border-radius: 5px;
+    border-radius: 15px;
+    border-width: 2px;
     text-align: center;
-    width: auto;
+    width: 10%;
+    margin: 0;
+    margin-left: 45%;
 }
 
+
+#rangeBarsContainer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.rangeBars {
+    align-items: center;
+    margin: 10px;
+    width:100%;
+}
+
+.inputBar {
+    display: flex;
+    justify-content: center;
+}
+
+.rangeBars input {
+    width : 60%; 
+}
+
+
+
+#sectionPreds {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#buttonsCons {
+    align-items: center;
+    margin: 10px;
+    width: 20%;
+}
+
+#pred {
+    align-items: center;
+    margin: 10px;
+    width: 80%;
+}
+
+#pred div {
+    border: solid;
+    border-width: 3px;
+    border-color: rgb(135, 145, 260);
+    border-radius: 30px;
+    background-color: rgb(235, 235, 235);
+    margin: 5px 0;
+}
+
+
+#generer {
+    border-color: rgb(135, 145, 260);
+    background-color: white; 
+}
+
+#finConsultation {
+    background-color: red;
+    color: white;
+}
+
+#forTest{
+    color:red;
+}
